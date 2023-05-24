@@ -1,6 +1,3 @@
-# About Us
-
-Thank you for checking out our website! This project serves to be the culmination of all our knowledge regarding cybersecurity. This project is led by [Sabrina Andersen (NukingDragons)](https://github.com/nukingdragons), [Patrick Jenkins (Drone)](https://github.com/Drone-spec), [Thomas Wells (mesumine)](https://github.com/mesumine), and [Jonathan Brown (numonce)](https://github.com/numonce). See the associated github page: [https://github.com/nukingdragons/hacknum-opus](https://github.com/nukingdragons/hacknum-opus).
 
 # Table of Contents
 - [Table of Contents](./SUMMARY.md)
@@ -28,3 +25,6 @@ Thank you for checking out our website! This project serves to be the culminatio
 - [Impact](./IMPACT_SUMMARY.md)
 	- [Website Defacement](./website_defacement.md)
 
+-----------
+
+[Contributors](./contrib.md)
