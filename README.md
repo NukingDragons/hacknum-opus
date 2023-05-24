@@ -1,6 +1,6 @@
-# Contributors
+# Hacknum-Opus
 
-Thank you for checking out our website! This project serves to be the culmination of all our knowledge regarding cybersecurity. See the [associated github page](https://github.com/nukingdragons/hacknum-opus).
+This project serves to be the culmination of all our knowledge regarding cybersecurity. See the [associated website](https://bit-bandits.com).
 
 This project is led and maintained by:
 - [Sabrina Andersen (NukingDragons)](https://github.com/nukingdragons)
