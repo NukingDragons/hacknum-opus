@@ -7,3 +7,6 @@ title = "Hacknum-Opus"
 
 [build]
 build-dir = "public"
+
+[output.html]
+cname="bit-bandits.com"
