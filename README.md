@@ -7,4 +7,5 @@ This project is led and maintained by:
 - [Patrick Jenkins (Drone)](https://github.com/Drone-spec)
 - [Thomas Wells (mesumine)](https://github.com/mesumine)
 - [Jonathan Brown (numonce)](https://github.com/numonce)
+- [Tyler McCann (tylerdotrar](https://github.com/tylerdotrar)
 
