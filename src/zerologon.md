@@ -5,7 +5,7 @@ This vulnerability stems from a flaw in a cryptographic authentication scheme us
 
 ## Prerequisites
 
-This exploit requires at least one DC to be set up and configured. The DC *must* not have the patch, i.e. install the DC from before August 11th, 2020. **Windows Server 2008 R2 SP1** requires an ESU license for the patch to apply, which is atypical, making this version the ideal target for configuring a range with this vulnerability.
+This exploit requires at least one DC to be set up and configured. The DC *must* not have the patch, i.e. install the DC from before August 11th, 2020, or attempt to delete all of the KB security updates which may not work. **Windows Server 2008 R2 SP1** requires an ESU license for the patch to apply, which is atypical, making this version the ideal target for configuring a range with this vulnerability.
 
 ## Setup
 
