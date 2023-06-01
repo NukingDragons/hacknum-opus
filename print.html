@@ -638,7 +638,7 @@ Examples:
 <h2 id="summary-9"><a class="header" href="#summary-9">Summary</a></h2>
 <p>This vulnerability stems from a flaw in a cryptographic authentication scheme used by the Netlogon Remote Protocol, which among other things can be used to update computer passwords. This flaw allows attackers to impersonate any computer, including the domain controller itself, and execute remote procedure calls on their behalf. </p>
 <h2 id="prerequisites-9"><a class="header" href="#prerequisites-9">Prerequisites</a></h2>
-<p>This exploit requires at least one DC to be set up and configured. The DC <em>must</em> not have the patch, i.e. install the DC from before August 11th, 2020. <strong>Windows Server 2008 R2 SP1</strong> requires an ESU license for the patch to apply, which is atypical, making this version the ideal target for configuring a range with this vulnerability.</p>
+<p>This exploit requires at least one DC to be set up and configured. The DC <em>must</em> not have the patch, i.e. install the DC from before August 11th, 2020, or attempt to delete all of the KB security updates which may not work. <strong>Windows Server 2008 R2 SP1</strong> requires an ESU license for the patch to apply, which is atypical, making this version the ideal target for configuring a range with this vulnerability.</p>
 <h2 id="setup-9"><a class="header" href="#setup-9">Setup</a></h2>
 <p>If the prerequisites have been met, then any Zerologon exploit should work out of the box.</p>
 <h2 id="execution-9"><a class="header" href="#execution-9">Execution</a></h2>
