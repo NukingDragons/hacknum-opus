@@ -3,7 +3,7 @@
 
 Name the file itself with all characters lowercase, and spaces replaced with underscores. E.g. "Template TTP" becomes "template_ttp". Then add it to "SUMMARY" as "`- [Template TTP](./template_ttp.md)`". The only reason this file is named "00 - template_ttp", is so that it stays at the top of obsidian. If it belongs to a category (i.e. Windows Lateral Movement), then it must be added there as well. Each category will be in all caps and will end with \_SUMMARY, i.e. "WINDOWS_LATERAL_MOVEMENT_SUMMARY".
 
-If pasting images, replace spaces with "%20", and rename it as follows:
+If pasting images, ensure to place them in the images directory otherwise your links may break when we go through and clean up the repo from time to time, and also replace spaces with "%20", and rename it as follows:
 
 ```md
 # Old Name

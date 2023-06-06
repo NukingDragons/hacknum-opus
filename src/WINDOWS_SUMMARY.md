@@ -6,5 +6,6 @@
 	 - [PSExec](./psexec.md)
 	 - [MOF Upload](./mof_upload.md)
 	 - [WinRM](./winrm.md)
+	 - [PrintNightmare (CVE-2021-1675)](./printnightmare.md)
 - [Persistence](./WINDOWS_PERSISTENCE_SUMMARY.md)
 	- [Invisible Registry Keys](./invisreg.md)
