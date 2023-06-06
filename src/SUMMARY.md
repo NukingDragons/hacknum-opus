@@ -25,6 +25,7 @@
 		 - [Zerologon (CVE-2020-1472)](./zerologon.md)
 - [Impact](./IMPACT_SUMMARY.md)
 	- [Website Defacement](./website_defacement.md)
+	- [GonnaCope](./gonnacope_(ransomware).md)
 
 -----------
 
