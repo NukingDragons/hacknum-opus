@@ -588,7 +588,7 @@ HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint\NoWarningNoEl
 <p><img src="./images/Pasted%20image%2020230606093107.png" alt="registry entries" /></p>
 <h2 id="execution-8"><a class="header" href="#execution-8">Execution</a></h2>
 <h3 id="method-1---cube0x0s-repo"><a class="header" href="#method-1---cube0x0s-repo">Method 1 - Cube0x0's Repo</a></h3>
-<p>Clone <a href="https://github.com/cube0x0/CVE-2021-1675">Cube0x0's repo</a>(https://github.com/cube0x0/CVE-2021-1675), as well as <a href="https://github.com/NukingDragons/DllHijacks">this DLL repo</a>(https://github.com/NukingDragons/DllHijacks). Pick the DLL you want from the DLL repo and compile it on Windows, or using MinGW following the instructions in the README.</p>
+<p>Clone <a href="https://github.com/cube0x0/CVE-2021-1675">Cube0x0's repo</a> (https://github.com/cube0x0/CVE-2021-1675), as well as [this DLL repo] (https://github.com/NukingDragons/DllHijacks)(https://github.com/NukingDragons/DllHijacks). Pick the DLL you want from the DLL repo and compile it on Windows, or using MinGW following the instructions in the README.</p>
 <p>Once you have the DLL of choice compiled, and whatever listener/method of receiving or connecting to the shell configured, use impackets SMB server to host the file, and run the following commands:</p>
 <pre><code class="language-bash">impacket-smbserver -smb2support share /path/to/folder/with/DLL
 </code></pre>
