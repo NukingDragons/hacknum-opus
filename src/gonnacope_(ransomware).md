@@ -1,8 +1,8 @@
 
 # GonnaCope
 
->[!warning]
->THIS IS REAL MALWARE. PROCEED WITH CAUTION. 
+> **Warning**
+> THIS IS REAL MALWARE. PROCEED WITH CAUTION. 
 
 ## Summary
 
