@@ -589,7 +589,7 @@ HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint\NoWarningNoEl
 <p><img src="./images/Pasted%20image%2020230606093107.png" alt="registry entries" /></p>
 <h2 id="execution-8"><a class="header" href="#execution-8">Execution</a></h2>
 <h3 id="method-1---cube0x0s-repo"><a class="header" href="#method-1---cube0x0s-repo">Method 1 - Cube0x0's Repo</a></h3>
-<p>Clone <a href="https://github.com/cube0x0/CVE-2021-1675">Cube0x0's repo</a> (https://github.com/cube0x0/CVE-2021-1675), as well as <a href="https://github.com/NukingDragons/DllHijacks">this DLL repo</a> (https://github.com/NukingDragons/DllHijacks). Pick the DLL you want from the DLL repo and compile it on Windows, or using MinGW following the instructions in the README.</p>
+<p>Clone <a href="https://github.com/cube0x0/CVE-2021-1675">Cube0x0's repo</a>, as well as <a href="https://github.com/NukingDragons/DllHijacks">this DLL repo</a>. Pick the DLL you want from the DLL repo and compile it on Windows, or using MinGW following the instructions in the README.</p>
 <p>Once you have the DLL of choice compiled, and whatever listener/method of receiving or connecting to the shell configured, use impackets SMB server to host the file, and run the following commands:</p>
 <pre><code class="language-bash">impacket-smbserver -smb2support share /path/to/folder/with/DLL
 </code></pre>
@@ -609,7 +609,7 @@ HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint\NoWarningNoEl
 <h2 id="prerequisites-9"><a class="header" href="#prerequisites-9">Prerequisites</a></h2>
 <p>The target must be windows, and you must run this tool with the appropriate access rights required for the hive you're trying to write to. HKLM requires Administrator/SYSTEM privileges, HKCU can be modified by the current user.</p>
 <h2 id="setup-9"><a class="header" href="#setup-9">Setup</a></h2>
-<p>This setup requires downloading and executing the following utility, defender may or may not catch this file on disk. Potentially use a <a href="./windows_reflective_pe_loader.html">reflective PE loader</a> to avoid this issue. The executable in question can be found at https://github.com/NukingDragons/invisreg. Go to Releases and download the latest executable, compilation is not required.</p>
+<p>This setup requires downloading and executing the following utility, defender may or may not catch this file on disk. Potentially use a <a href="./windows_reflective_pe_loader.html">reflective PE loader</a> to avoid this issue. The executable in question can be <a href="https://github.com/NukingDragons/invisreg">found at this repo</a>. Go to Releases and download the latest executable, compilation is not required.</p>
 <h2 id="execution-9"><a class="header" href="#execution-9">Execution</a></h2>
 <h3 id="method-1---invisregexe"><a class="header" href="#method-1---invisregexe">Method 1 - invisreg.exe</a></h3>
 <p>Running invisreg.exe without any options will provide the following output:</p>
