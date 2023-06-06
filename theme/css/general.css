@@ -8,7 +8,7 @@
 }
 
 html {
-    font-family:TopazPlus-a1200;
+    font-family: "Open Sans", sans-serif;
     color: var(--fg);
     background-color: var(--bg);
     text-size-adjust: none;
