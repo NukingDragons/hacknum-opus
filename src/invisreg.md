@@ -9,7 +9,7 @@ The target must be windows, and you must run this tool with the appropriate acce
 
 ## Setup
 
-This setup requires downloading and executing the following utility, defender may or may not catch this file on disk. Potentially use a [reflective PE loader](./windows_reflective_pe_loader.md) to avoid this issue. The executable in question can be found at https://github.com/NukingDragons/invisreg. Go to Releases and download the latest executable, compilation is not required.
+This setup requires downloading and executing the following utility, defender may or may not catch this file on disk. Potentially use a [reflective PE loader](./windows_reflective_pe_loader.md) to avoid this issue. The executable in question can be [found at this repo](https://github.com/NukingDragons/invisreg). Go to Releases and download the latest executable, compilation is not required.
 
 ## Execution
 

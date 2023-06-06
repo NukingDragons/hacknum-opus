@@ -22,7 +22,7 @@ HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint\NoWarningNoEl
 
 ### Method 1 - Cube0x0's Repo
 
-Clone [Cube0x0's repo](https://github.com/cube0x0/CVE-2021-1675) (https://github.com/cube0x0/CVE-2021-1675), as well as [this DLL repo](https://github.com/NukingDragons/DllHijacks) (https://github.com/NukingDragons/DllHijacks). Pick the DLL you want from the DLL repo and compile it on Windows, or using MinGW following the instructions in the README.
+Clone [Cube0x0's repo](https://github.com/cube0x0/CVE-2021-1675), as well as [this DLL repo](https://github.com/NukingDragons/DllHijacks). Pick the DLL you want from the DLL repo and compile it on Windows, or using MinGW following the instructions in the README.
 
 Once you have the DLL of choice compiled, and whatever listener/method of receiving or connecting to the shell configured, use impackets SMB server to host the file, and run the following commands:
 
