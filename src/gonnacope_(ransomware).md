@@ -1,9 +1,6 @@
 
 # GonnaCope
 
-> **Warning**
-> THIS IS REAL MALWARE. PROCEED WITH CAUTION. 
-
 ## Summary
 
 The GonnaCope Ransomware is among the more harmful ransomware threats. It is capable of locking the data of its victims completely. Furthermore, thanks to the sufficient strength of the encryption algorithm, the affected files are unlikely to ever be restored without assistance from the attackers.
