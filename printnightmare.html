@@ -147,7 +147,7 @@
 <h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
 <p>PrintNightmare is a critical vulnerability that allows an attacker to obtain remote code execution and/or privilege escalation against any target Windows machine using the Spooler service that is enabled by default. While Microsoft has issued a patch for this vulnerability, if a few registry keys are present, then the target will still be vulnerable despite having the patch.</p>
 <h2 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h2>
-<p>Either a Windows server that doesn't have the patch released on July 1st, 2021, or must have some special registry keys added. Further, some form of SMB server and a custom compiled DLL is required to exploit this vulnerability.</p>
+<p>Either a Windows server that doesn't have the patch released on July 1st, 2021, or must have some special registry keys added. Further, some form of SMB server and a custom compiled DLL is required to exploit this vulnerability. This exploit requires credentials to operate, even a low-privilege user may work.</p>
 <h2 id="setup"><a class="header" href="#setup">Setup</a></h2>
 <p>Once the server is installed, and <em>if</em> the server contains the patch, then the following registry keys need to be installed:</p>
 <pre><code class="language-registry">HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint\RestrictDriverInstallationToAdministrators REG_DWORD 0x0
