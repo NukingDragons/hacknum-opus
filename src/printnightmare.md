@@ -5,7 +5,7 @@ PrintNightmare is a critical vulnerability that allows an attacker to obtain rem
 
 ## Prerequisites
 
-Either a Windows server that doesn't have the patch released on July 1st, 2021, or must have some special registry keys added. Further, some form of SMB server and a custom compiled DLL is required to exploit this vulnerability.
+Either a Windows server that doesn't have the patch released on July 1st, 2021, or must have some special registry keys added. Further, some form of SMB server and a custom compiled DLL is required to exploit this vulnerability. This exploit requires credentials to operate, even a low-privilege user may work.
 
 ## Setup
 
