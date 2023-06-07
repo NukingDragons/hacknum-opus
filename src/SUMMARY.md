@@ -21,6 +21,7 @@
 	- [Persistence](./WINDOWS_PERSISTENCE_SUMMARY.md)
 		- [Invisible Registry Keys](./invisreg.md)
 - [Active Directory](./ACTIVE_DIRECTORY_SUMMARY.md)
+	- [SharpGPOAbuse](./sharpgpoabuse.md)
 	- [Vulnerabilities](./ACTIVE_DIRECTORY_VULNERABILITIES.md)
 		 - [Zerologon (CVE-2020-1472)](./zerologon.md)
 - [Impact](./IMPACT_SUMMARY.md)
