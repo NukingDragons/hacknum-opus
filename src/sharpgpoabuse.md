@@ -1,7 +1,7 @@
 # SharpGPOAbuse
 ## Summary
 
-SharpGPOAbuse is a .NET application written in C# that can be used to take advantage of a user's edit rights on a Group Policy Object (GPO) in order to compromise the objects that are controlled by that GPO. The original project hasn't been maintained in a couple of years, but [this fork](https://github.com/NukingDragons/SharpGPOAbuse#adding-a-registry-key) extends the functionality. The "Vulnerable GPO" is simply the GPO that you wish to target, this can even be the default domain controller GPO that is automatically created on every DC.
+SharpGPOAbuse is a .NET application written in C# that can be used to take advantage of a user's edit rights on a Group Policy Object (GPO) in order to compromise the objects that are controlled by that GPO. The original project hasn't been maintained in a couple of years, but [this fork](https://github.com/NukingDragons/SharpGPOAbuse) extends the functionality. The "Vulnerable GPO" is simply the GPO that you wish to target, this can even be the default domain controller GPO that is automatically created on every DC.
 
 ## Prerequisites
 
