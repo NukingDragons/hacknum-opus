@@ -34,4 +34,4 @@ Navigate to the directory of the ransomware and double click the `G0nnaC0pe.bat`
 
 - The ransomware spawns the below shell:
 
-![[Pasted image 20230606110703.png]]
+![gonnacope](./images/Pasted%20image%2020230606110703.png)
