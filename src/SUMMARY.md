@@ -10,6 +10,7 @@
  - [Web](WEB_SUMMARY.md)
 	 - [PHP](./PHP_SUMMARY.md)
 		 - [Basic PHP Webshell Oneliner](./php_webshell_oneline.md)
+		 - [PHP Filter Gadget Chain](./php_filter_gadget_chain.md)
  - [Linux](./LINUX_SUMMARY.md)
 	 - [Privilege Escalation](./LINUX_PRIVESC_SUMMARY.md)
 		  - [SUDO/SUID/etc](./linux_gtfobins.md)
