@@ -1,0 +1,1 @@
+- [Powershell AMSI Bypass](./powershell_amsi_bypass.md)

@@ -1,5 +1,7 @@
 # Windows
 
+ - [AMSI Bypass](./AMSI_BYPASS_SUMMARY.md)
+	  - [Powershell AMSI Bypass](./powershell_amsi_bypass.md)
  - [Stealth](./WINDOWS_STEALTH_SUMMARY.md)
 	- [Reflective PE Loader](./windows_reflective_pe_loader.md)
  - [Lateral Movement](./WINDOWS_LATERAL_MOVEMENT_SUMMARY.md)
