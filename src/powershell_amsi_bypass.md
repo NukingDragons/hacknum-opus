@@ -51,7 +51,7 @@ $i.SetValue($null, $true)
 
 Now the 'amsiutils' test string should not trigger defender:
 
-![[Pasted image 20230707133543.png]]
+![Bypass AMSI via Init](./images/Pasted%20image%2020230707133543.png)
 
 #### Indicators of Compromise
 
