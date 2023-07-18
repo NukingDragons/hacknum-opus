@@ -28,6 +28,7 @@
 		- [Invisible Registry Keys](./invisreg.md)
 - [Active Directory](./ACTIVE_DIRECTORY_SUMMARY.md)
 	- [SharpGPOAbuse](./sharpgpoabuse.md)
+	- [Certificate Template Abuse](./cert_template_abuse.md)
 	- [Vulnerabilities](./ACTIVE_DIRECTORY_VULNERABILITIES_SUMMARY.md)
 		 - [Zerologon (CVE-2020-1472)](./zerologon.md)
 - [Impact](./IMPACT_SUMMARY.md)
