@@ -9,7 +9,37 @@ Active Directory with ADCS set up and configured. A certificate template must be
 
 ## Setup
 
-TODO
+First, a domain controller must be configured. It is important to *NOT* install the Certificate Services PRIOR to promoting to a domain controller. Failure to abide by this will prevent you from promoting the server into a domain controller. Thank you Windows! Once "Active Directory Domain Services" has been installed and the server has been promoted, then and only then install "Active Directory Certificate Services" from the "Add Roles and Features" menu.
+
+All of the defaults when adding ADCS to the range are fine. Only the "Certificate Authority" is required, and the setup type of the CA should be set to "Enterprise CA".
+
+![image](./images/Pasted%20image%2020230719113536.png)
+
+Next, go to Tools -> Certification Authority, and then right click -> Manage on Certificate Templates.
+
+![image](./images/Pasted%20image%2020230719113831.png)
+
+Find a template that has the most features enabled that you want to use, in this case I chose "Workstation Authentication", and then I duplicated the template.
+
+![image](./images/Pasted%20image%2020230719120516.png)
+
+For ESC1, change the Subject Name to be handled by the enrollee by selecting "Supply in the request".
+
+![image](./images/Pasted%20image%2020230719114320.png)
+
+To add or remove specific features, modify the Application Policies in the Extensions tab.
+
+![image](./images/Pasted%20image%2020230719114419.png)
+
+To control who can enroll, change the settings in the Security tab.
+
+![image](./images/Pasted%20image%2020230719115833.png)
+
+With the new template created, close the window and then click on "Certificate Templates", and then go to Action -> New -> Certificate Template to Issue. Select the template that was just created in the following window and click OK.
+
+![image](./images/Pasted%20image%2020230719130337.png)
+
+LDAP needs to have SSL enabled to authenticate using the certificates. Reboot the DC after all of these changes have been made. God fucking help you if LDAPS doesn't work, cause he didn't help me.
 
 ## Execution
 

@@ -13,6 +13,8 @@ If pasting images, ensure to place them in the images directory otherwise your l
 ![image name](./images/Pasted%20image%201.png)
 ```
 
+Alternatively, use the `fix_links.sh` file in the root of this repo to automatically apply the above change.
+
 If you need to host a custom or specific file, place it into the `misc-attachments` folder and then link it like so:
 
 ```md
