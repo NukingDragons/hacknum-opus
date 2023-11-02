@@ -18,7 +18,7 @@ Alternatively, use the `fix_links.sh` file in the root of this repo to automatic
 If you need to host a custom or specific file, place it into the `misc-attachments` folder and then link it like so:
 
 ```md
-![link](./misc-attachments/file.whatevs)
+[link](./misc-attachments/file.whatevs)
 ```
 
 ## Prerequisites
