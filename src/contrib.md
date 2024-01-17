@@ -8,4 +8,5 @@ This project is led and maintained by:
 - [Thomas Wells (mesumine)](https://github.com/mesumine)
 - [Jonathan Brown (numonce)](https://github.com/numonce)
 - [Tyler McCann (tylerdotrar)](https://github.com/tylerdotrar)
+- [Minwoo Shin (shinspace92)](https://github.com/shinspace92)
 
