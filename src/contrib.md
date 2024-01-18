@@ -9,4 +9,4 @@ This project is led and maintained by:
 - [Jonathan Brown (numonce)](https://github.com/numonce)
 - [Tyler McCann (tylerdotrar)](https://github.com/tylerdotrar)
 - [Noah Kirchner (Noah Kirchner)](https://github.com/NoahKirchner)
-
+- [Minwoo Shin (shinspace92)](https://github.com/shinspace92)
