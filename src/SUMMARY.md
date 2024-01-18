@@ -7,6 +7,9 @@
 - [Reverse Shells](./REVERSE_SHELLS_SUMMARY.md)
 	- [Netcat with SSL](./netcat_ssl.md)
 	- [Upgrading Shells with Magic](./upgrade_magic.md)
+- [C2](./C2_SUMMARY.md)
+	- [Stealth](C2_STEALTH_SUMMARY.md)
+		- [JA3 Obfuscation](ja3_obfuscation.md)
  - [Web](WEB_SUMMARY.md)
 	 - [Gitlab](./GITLAB_SUMMARY.md)
 		 - [Adding a Backdoor User](./gitlab-backdoor-user.md)
@@ -38,9 +41,7 @@
 - [Impact](./IMPACT_SUMMARY.md)
 	- [Website Defacement](./website_defacement.md)
 	- [GonnaCope](./gonnacope_(ransomware).md)
-- [C2](./C2_SUMMARY.md)
-	- [Stealth](C2_STEALTH_SUMMARY.md)
-		- [JA3 Obfuscation](ja3_obfuscation.md)
+
 -----------
 
 [Contributors](./contrib.md)

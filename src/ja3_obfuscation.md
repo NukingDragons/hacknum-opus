@@ -8,7 +8,6 @@ The solution to the abnormal JA3 hashes produced by C2 traffic is to encapsulate
 
 ## Prerequisites
 * Linux VM (Ideally with the apt package manager)
-* An SSL certificate and private key (Self signed will work but may raise red flags)
 * A C2 server (Can be running on the aforementioned Linux VM)
 
 ## Setup
@@ -56,19 +55,23 @@ backend myserver
 8. In another terminal/tab, start a python webserver with the command `python3 -m http.server --bind 127.0.0.1 8000`.
 9. Verify the redirection using `curl 127.0.0.1:8080`. The output of this command should be the filenames in the directory where the webserver is being hosted. If you are still getting a `503 Service Unavailable` error, ensure that you have the `default_backend` under the `frontend` section set correctly.
 10. You can now redirect unencrypted HTTP traffic by adjusting the frontend and backend values.
+### Generating SSL Certificates
+1. Generate a private key using `openssl genpkey -algorithm RSA -out pkey.pem.
+2. Generate a certificate signing request using `openssl req -new -key pkey.pem -out csr.pem`.
+3. Generate a self signed certificate using `openssl x509 -req -days 365 -in csr.pem -signkey pkey.pem -out cert.pem.
+4. Create a new file using `touch tls.pem`.
+5. Add the cert.pem to tls.pem using `cat cert.pem >> tls.pem`.
+6. Add the private key information to tls.pem using `sudo cat pkey.pem >> tls.pem`.
+
 ### Configuring TLS
-1. Locate your cert.pem and pkey.pem files (Certificate and private key).
-2. Create a new file using `touch tls.pem`.
-3. Add the cert.pem to tls.pem using `cat cert.pem >> tls.pem`.
-4. Add the private key information to tls.pem using `sudo cat pkey.pem >> tls.pem`.
-5. Re open the configuration file from earlier and modify the following lines. This will change the frontend bind address to be any interface on port 443, and will assign the listed ssl cert to the port.
+1. Open the configuration file from earlier and modify the following lines. This will change the frontend bind address to be any interface on port 443, and will assign the listed ssl cert to the port.
 ```
 frontend myfrontend
 	default_backend myserver
 	bind 0.0.0.0:443 ssl cert /path/to/tls.pem
 
 ```
-6. Save and exit the configuration file and restart HAProxy using `systemctl restart haproxy`. If you get an error, ensure that you properly combined the two .pem files from earlier into a single file, and that your path is correct.
+2. Save and exit the configuration file and restart HAProxy using `systemctl restart haproxy`. If you get an error, ensure that you properly combined the two .pem files from earlier into a single file, and that your path is correct.
 
 ## Execution
 1. Modify the configuration file from earlier to be representative of your listener address as follows (the pound signs are just comments).
