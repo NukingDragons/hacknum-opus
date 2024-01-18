@@ -38,7 +38,9 @@
 - [Impact](./IMPACT_SUMMARY.md)
 	- [Website Defacement](./website_defacement.md)
 	- [GonnaCope](./gonnacope_(ransomware).md)
-
+- [C2](./C2_SUMMARY.md)
+	- [Stealth](C2_STEALTH_SUMMARY.md)
+		- [JA3 Obfuscation](ja3_obfuscation.md)
 -----------
 
 [Contributors](./contrib.md)
