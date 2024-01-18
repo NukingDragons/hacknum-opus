@@ -30,6 +30,8 @@
 		 - [PrintNightmare (CVE-2021-1675)](./printnightmare.md)
 	- [Persistence](./WINDOWS_PERSISTENCE_SUMMARY.md)
 		- [Invisible Registry Keys](./invisreg.md)
+	- [Privilege Escalation](./WINDOWS_PRIVESC_SUMMARY.md)
+		- [Outlook Client (CVE-2023-23397)](./cve-2023-23397.md)
 - [Active Directory](./ACTIVE_DIRECTORY_SUMMARY.md)
 	- [SharpGPOAbuse](./sharpgpoabuse.md)
 	- [Certificate Template Abuse](./cert_template_abuse.md)
