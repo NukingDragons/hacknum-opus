@@ -10,3 +10,4 @@ This project is led and maintained by:
 - [Tyler McCann (tylerdotrar)](https://github.com/tylerdotrar)
 - [Noah Kirchner (Noah Kirchner)](https://github.com/NoahKirchner)
 - [Minwoo Shin (shinspace92)](https://github.com/shinspace92)
+- [Ava Hughes (Skyfa117)](https://github.com/Skyfa117)
