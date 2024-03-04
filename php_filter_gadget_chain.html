@@ -158,6 +158,7 @@
 # OR
 require($_GET['page'])
 </code></pre>
+<p>The chain requires that <code>extension=iconv</code> is set in the php.ini file, this is usually <code>/etc/php/php.ini</code></p>
 <p>This can be tested by performing the following request to see if any output is produced:</p>
 <pre><code class="language-bash">curl http://ip/index.php?page=php://filter/convert.base64-encode/resource=/etc/hostname
 </code></pre>
