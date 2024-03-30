@@ -1048,22 +1048,28 @@ instance of MyClass89 as $MyClass
 <p>TODO</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="winrm"><a class="header" href="#winrm">WinRM</a></h1>
 <h2 id="summary-15"><a class="header" href="#summary-15">Summary</a></h2>
-<p>WinRM, or Windows Remote Management, is a feature that can be enabled on any Windows Server. Usage of this service requires credentials (or the NTLM hash) of a user that has permissions. The WinRM service starts automatically on Windows Server 2008 and later. On earlier versions of Windows (client or server), you need to start the service manually.</p>
+<p>WinRM, or Windows Remote Management, is a feature that comes installed on all modern versions of Windows (Windows Server 2008/Windows 7 onwards) which allows remote administration between hosts. Usage of this service requires credentials or the NTLM hash of a user that has remote management permissions.</p>
+<p>WinRM utilizes an API called wsman, which is built ontop of HTTP/S and operates on ports 5985 (HTTP) or 5986 (HTTPS) by default. Its legitimate use is comparable to psexec, and it can be used to perform administrative functions on remote hosts without the need for SSH or RDP. With the addition of PowerShell to the Windows ecosystem, it also goes by the name PowerShell Remoting, though these commands are just wrappers around WinRM.</p>
 <h2 id="prerequisites-15"><a class="header" href="#prerequisites-15">Prerequisites</a></h2>
-<p>A windows server must be set up and configured to use WinRM, with at least one user who has access to this service.</p>
+<p>WinRM may require configuration to work, and the target user must have the &quot;Remote Management User&quot; permissions. Unless permissions are applied via group policy, users must be added to the &quot;Remote Management Users&quot; localgroup on a per-machine basis. Adding that user to the domain group only grants WinRM access to the domain controller.</p>
 <h2 id="setup-15"><a class="header" href="#setup-15">Setup</a></h2>
-<p>To configure winrm, use the following command as an administrator:</p>
+<p>To configure WinRM, run the following command as an administrator:</p>
 <pre><code class="language-cmd">winrm quickconfig
+</code></pre>
+<p>Once WinRM has been successfully configured, add a user to the Remote Management User group using this command:</p>
+<pre><code>net localgroup &quot;Remote Management Users&quot; username /add
 </code></pre>
 <h2 id="execution-15"><a class="header" href="#execution-15">Execution</a></h2>
 <h3 id="method-1---evil-winrm"><a class="header" href="#method-1---evil-winrm">Method 1 - Evil-WinRM</a></h3>
-<p>Evil-WinRM is written in Ruby, ruby must be installed for this tool to work. Using the credentials of the user that has access to the WinRM service, run one of the following commands to obtain access to the target.</p>
+<p>https://github.com/Hackplayers/evil-winrm</p>
+<p>Evil-WinRM is a tool which wraps WinRM commands to give you an interactive shell on a target machine. Evil-WinRM is written in Ruby, and requires it to be installed to work. </p>
+<p>Using the credentials of the user that has access to the WinRM service, run one of the following commands to obtain access to the target.</p>
 <p>Connect to a host:</p>
 <p><code>evil-winrm --ip &lt;target&gt; --user &lt;user&gt; --password &lt;password&gt;</code></p>
 <p>Connect to a host, passing the hash instead of using a password:</p>
 <p><code>evil-winrm --ip &lt;target&gt; --user &lt;user&gt; --hash &lt;nt_hash&gt;</code></p>
 <h4 id="indicators-of-compromise-24"><a class="header" href="#indicators-of-compromise-24">Indicators of Compromise</a></h4>
-<p>TODO</p>
+<p>When connecting to a WinRM port, network traffic will show the upload of a &quot;wsman&quot; file to the target host over HTTP.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="printnightmare-cve-2021-1675"><a class="header" href="#printnightmare-cve-2021-1675">PrintNightmare (CVE-2021-1675)</a></h1>
 <h2 id="summary-16"><a class="header" href="#summary-16">Summary</a></h2>
 <p>PrintNightmare is a critical vulnerability that allows an attacker to obtain remote code execution and/or privilege escalation against any target Windows machine using the Spooler service that is enabled by default. While Microsoft has issued a patch for this vulnerability, if a few registry keys are present, then the target will still be vulnerable despite having the patch.</p>
