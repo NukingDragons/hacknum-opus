@@ -18,6 +18,8 @@ include($_GET['page'])
 require($_GET['page'])
 ```
 
+The chain requires that `extension=iconv` is set in the php.ini file, this is usually `/etc/php/php.ini`
+
 This can be tested by performing the following request to see if any output is produced:
 
 ```bash

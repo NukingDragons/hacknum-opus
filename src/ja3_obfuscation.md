@@ -74,6 +74,9 @@ frontend myfrontend
 2. Save and exit the configuration file and restart HAProxy using `systemctl restart haproxy`. If you get an error, ensure that you properly combined the two .pem files from earlier into a single file, and that your path is correct.
 
 ## Execution
+
+### Method 1 - Utilizing HAProxy
+
 1. Modify the configuration file from earlier to be representative of your listener address as follows (the pound signs are just comments).
 ```
 backend myserver
