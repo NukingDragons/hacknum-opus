@@ -31,7 +31,7 @@ Step 2: Copy the target executable into the directory:
 copy C:\Windows\System32\ComputerDefaults.exe "C:\Windows \System32\ComputerDefaults.exe"
 ```
 
-Step 3: For this method, the function required for edputil.dll is DllMain, modify and execute the following C code and name it as edputil.dll:
+Step 3: For this method, the function required for edputil.dll is DllMain, modify and compile the following C code and name it as edputil.dll:
 
 ```c
 #include <windows.h>
@@ -56,7 +56,7 @@ BOOL WINAPI DllMain(HINSTANCE h, DWORD d, LPVOID l)
 }
 ```
 
-Then, move the DLL into the System32 directory. Your final directory structure should look like this:
+Then, move the DLL into the mock System32 directory. Your final directory structure should look like this:
 
 ![image](./images/Pasted%20image%2020240702162950.png)
 
