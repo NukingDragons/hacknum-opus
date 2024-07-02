@@ -13,3 +13,5 @@
 	- [Invisible Registry Keys](./invisreg.md)
 - [Privilege Escalation](./WINDOWS_PRIVESC_SUMMARY.md)
 	- [Outlook Client (CVE-2023-23397)](./cve-2023-23397.md)
+- [UAC Bypass](./UAC_BYPASS_SUMMARY.md)
+	- [Mock Folder + Trusted Executable DLL Hijacking](./mocktrusted.md)
